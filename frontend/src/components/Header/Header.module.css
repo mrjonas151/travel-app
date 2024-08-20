@@ -1,12 +1,47 @@
+.mainContainer{
+    padding: 1em;
+}
+.contactInfo{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 0.5em;
+}
+
+.number{
+    display: flex;
+    gap: 1em;
+    color: #081134;
+    margin-left: 2em;
+}
+
+.socialContainer{
+    display: flex;
+    align-items: center;
+    color: #081134;
+    margin-right: 2em;
+    gap: 1em;
+}
+
+.socialContainer img{
+    margin-top: 7px;
+    width: 15px;
+    margin-right: 0.7em;
+}
+
 .logo{
-    width: 150px
+    width: 150px;
+    margin-left: 1.5em;
+    margin-right: 5em;
 }
 
 .navbar{
     display: flex;
     justify-content: space-between;
-    background-color: gray;
-    padding: 1em;
+}
+
+.space{
+    display: flex;
 }
 
 .list {
@@ -16,7 +51,7 @@
 }
 
 .item{
-    margin-right: 1em;
+    margin-right: 2em;
 }
 
 .item a{
@@ -25,5 +60,32 @@
 }
 
 .item a:hover{
+    color: #f84d50;
+}
+
+.searchContainer{
+    display: flex;
+    align-items: center;
+    color: #081134;
+    margin-right: 2em;
+    gap: 0.2em;
+}
+
+.searchContainer img{
+    width: 25px;
+    margin-right: 0.5em;
+}
+
+.userImg{
+    width: 20px !important;
+}
+
+.loginLink{
+    text-decoration: none;
+    color: #081134;
+    font-size: 1.1rem;
+}
+
+.loginLink:hover{
     color: #f84d50;
 }
