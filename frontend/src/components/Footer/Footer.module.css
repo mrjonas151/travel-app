@@ -1,0 +1,167 @@
+.mainContainer{
+    display: flex;
+    justify-content: space-between;
+    background-color: #111111;
+    border-top: 1px solid #e9ecef;
+    color: #6f6f6f;
+    padding: 5em;
+}
+
+.firstSection img{
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.socialContainer{
+    display: flex;
+    align-items: center;
+    color: #e9ecef;
+    gap: 1.1em;
+    margin-right: 2em;
+}
+
+.socialContainer img{
+    width: 20px;
+}
+
+.verticalLine {
+    width: 1.2px;
+    height: 250px;
+    background-color: #504e4e;
+    margin: 0 10px;
+}
+
+.call{
+    color: #FFF;
+}
+
+.phone{
+    color: #f84d50;
+}
+
+.helpContainer{
+    margin-bottom: 1.7em;
+}
+
+.helpContainer p{
+    margin-bottom: 0.5em;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.addressContainer{
+    margin-bottom: 1.3em;
+}
+
+.addressContainer p{
+    margin-bottom: 0.5em;
+}
+
+
+.company p{
+    margin-top: 1em;
+    text-decoration: none !important;
+    color: #6f6f6f;
+    font-size: 1.1em;
+}
+
+.company strong{
+    font-family: 'Kaushan Script', cursive;
+}
+
+.noUnderlineLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.company p:hover{
+    color: #f84d50;
+}
+
+.topDestination{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-right: 5em;
+}
+
+.topDestination strong {
+    font-family: 'Kaushan Script', cursive;
+    margin-left: 1em;
+}
+
+.topDestinationCities {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+
+.topDestinationCities p {
+    flex-basis: calc(33.33% - 40px);
+    margin: 0px;
+    font-size: 1.1em;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.topDestinationCities p:hover {
+    color: #f84d50;
+}
+
+.newsletter{
+    font-family: 'Kaushan Script', cursive;
+}
+
+.inputContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.inputContainer img{
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    pointer-events: none;
+}
+
+.inputContainer input{
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    margin-right: 1em;
+    outline: none;
+    box-shadow: none;
+    padding-left: 2em;
+}
+
+.inputContainer input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.newsletterContainer{
+    margin-right: 5em;
+}
+
+.newsletterContainer button{
+    background-color: #f84d50;
+    height: 2.5rem;
+    width: 40%;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    outline: none;
+    margin-top: 1em;
+}
+
+.rights{
+    margin-top: 3em;
+}

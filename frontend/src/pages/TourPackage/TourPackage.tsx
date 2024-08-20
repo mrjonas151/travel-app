@@ -1,6 +1,13 @@
+import Footer from "../../components/Footer/Footer"
+import Header from "../../components/Header/Header"
+
 const TourPackage = () => {
   return (
-    <div>TourPackage</div>
+    <>
+      <Header />
+      <h1>Tour Package</h1>
+      <Footer />
+    </>
   )
 }
 
