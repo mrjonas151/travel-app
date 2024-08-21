@@ -1,0 +1,98 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+    width: 100%;
+}
+
+.mainContainer img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+.mainContainer p{
+    color: gray;
+    margin-bottom: 7px;
+}
+
+.titleContainer{
+    width: 70%;
+}
+
+.stars{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    color: #FFF;
+    height: 25px;
+    width: 53px;
+    background-color: #f84d50;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+
+.stars img{
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.stars p{
+    color: #FFF;
+    font-size: 1rem;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.reviews{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    align-items: center;
+}
+
+.reviewP{
+    margin-top: 2.7vh;
+}
+
+.firstReview{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.days{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.days img{
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    margin-top: 3.1vh;
+}
+
+.price{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 20px;
+}
+
+.price strong{
+    font-size: 1.2rem;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.price p{
+    font-size: 1rem;
+}

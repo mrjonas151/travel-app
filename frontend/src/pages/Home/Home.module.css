@@ -35,6 +35,28 @@
     filter: brightness(0.3);
 }
 
-.content {
+.popularTours {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding-top: 100px;
+    padding-bottom: 80px;
+}
+
+.popularTours h2{
+    color: #f84d50;
+    font-size: 2rem;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.popularTours h1{
+    font-size: 3rem;
+}
+
+.places{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
