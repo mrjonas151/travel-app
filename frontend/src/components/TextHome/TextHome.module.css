@@ -1,0 +1,21 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainer h2{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 2rem;
+    color: #f84d50;
+}
+
+.mainContainer h1{
+    font-size: 4rem;
+}
+
+.mainContainer p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}

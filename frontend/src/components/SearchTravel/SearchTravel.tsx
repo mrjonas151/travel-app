@@ -1,5 +1,9 @@
 import InputComponent from '../InputComponent/InputComponent'
 import styles from './SearchTravel.module.css'
+import telegrama from '../../assets/telegrama.png'
+import flag from '../../assets/flag.png'
+import calendar from '../../assets/calendar.png'
+import guests from '../../assets/guests.png'
 
 const SearchTravel = () => {
   return (
@@ -8,19 +12,19 @@ const SearchTravel = () => {
             <div className={styles.rowComponents}>
                 <div className={styles.columnComponents}>
                     <h2>Destination</h2>
-                    <InputComponent />
+                    <InputComponent imgSrc={telegrama} imgAlt='Telegrama logo' />
                 </div>
-                <div>
+                <div className={styles.columnComponents}>
                     <h2>Type</h2>
-                    <InputComponent />
+                    <InputComponent imgSrc={flag} imgAlt='Flag logo' />
                 </div>
-                <div>
+                <div className={styles.columnComponents}>
                     <h2>When</h2>
-                    <InputComponent />
+                    <InputComponent imgSrc={calendar} imgAlt='Calendar logo' />
                 </div>
-                <div>
+                <div className={styles.columnComponents}>
                     <h2>Guests</h2>
-                    <InputComponent />
+                    <InputComponent imgSrc={guests} imgAlt='Guests logo' />
                 </div>
                 <div>
                     <button className={styles.button}>Search</button>
