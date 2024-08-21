@@ -1,32 +1,15 @@
 import Footer from "../../components/Footer/Footer"
 import Header from "../../components/Header/Header"
+import SearchTravel from "../../components/SearchTravel/SearchTravel"
+import styles from './Home.module.css'
 
 const Home = () => {
   return (
     <>
         <Header />
-        <h1>Home</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>OK</h1>
-        <h1>OKOKOK</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>TESTE home text idk random words here...</h1>
-        <h1>OK</h1>
-        <h1>OKOKOK</h1>
+        <div className={styles.searchContainer}>
+          <SearchTravel />
+        </div>
         <Footer />
     </>
   )
