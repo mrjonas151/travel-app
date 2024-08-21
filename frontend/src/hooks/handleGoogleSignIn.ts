@@ -38,7 +38,6 @@ const handleGoogleSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
         } else {
             toast.error("Failed to sign in with Google.");
         }
-        console.log(error);
     }
 };
 

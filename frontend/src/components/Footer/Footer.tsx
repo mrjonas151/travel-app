@@ -6,12 +6,26 @@ import linkedin_footer from "../../assets/linkedin_footer.png"
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import telegrama from "../../assets/telegrama.png"
+import { useState } from 'react'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = () => {
   const navigate = useNavigate(); 
+  const [email, setEmail] = useState('');
 
   const handleCityClick = () => {
     navigate('/error'); 
+  };
+
+  const handleSubmitEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(email)) {
+      toast.success('You have been subscribed. Thanks!');
+      setEmail('');
+    } else {
+      toast.error('Please enter a valid email address.');
+    }
   };
 
   return (
@@ -59,10 +73,10 @@ const Footer = () => {
           <p className={styles.newsletter}>Sign up Newsletter</p>
           <div className={styles.inputContainer}>
             <img src={telegrama} alt="telegrama" />
-            <input type="text" placeholder="Enter email..." />
+            <input type="text" placeholder="Enter email..." value={email} onChange={(e) => setEmail(e.target.value)}/>
           </div>
           
-            <button>Submit</button>
+            <button onClick={handleSubmitEmail}>Submit</button>
           <p className={styles.rights}>© 2023 Trisog All Right Reserved</p>
         </div>
     </footer>
