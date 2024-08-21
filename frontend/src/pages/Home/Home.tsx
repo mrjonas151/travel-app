@@ -5,6 +5,7 @@ import styles from './Home.module.css'
 import air_balloon from '../../assets/air_balloon.png'
 import TextHome from "../../components/TextHome/TextHome"
 import PopularToursComponent from "../../components/PopularToursComponent/PopularToursComponent"
+import StatisticsComponent from "../../components/StatisticsComponent/StatisticsComponent"
 
 const Home = () => {
   return (
@@ -27,11 +28,20 @@ const Home = () => {
           <PopularToursComponent />
           <PopularToursComponent />
           <PopularToursComponent />
-                    <PopularToursComponent />
-
-
+          <PopularToursComponent />
           <PopularToursComponent />
         </div>
+        <div className={styles.statistics}>
+          <StatisticsComponent number={"120+"} text={"Total Destination"} />
+          <StatisticsComponent number={"500+"} text={"Travel Packages"} />
+          <StatisticsComponent number={"12k+"} text={"Total Travelers"} />
+          <StatisticsComponent number={"7k+"} text={"Positive Reviews"} />
+        </div>
+        <div className={styles.popularTours}>
+          <h2>Destination</h2>
+          <h1>Top Attractions Destination</h1>
+        </div>
+        
         <Footer />
     </>
   )

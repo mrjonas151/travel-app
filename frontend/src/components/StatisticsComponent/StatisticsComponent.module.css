@@ -1,0 +1,18 @@
+.mainContainer h1{
+    color: black;
+    font-size: 3rem;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.mainContainer p{
+    font-size: 1.2rem;
+    color: gray;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
