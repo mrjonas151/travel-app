@@ -123,3 +123,13 @@
     flex-wrap: wrap;
     gap: 40px;
 }
+
+.iconsComponent{
+    margin-top: 5vh;
+    background-color: rgb(228, 228, 228);
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    position: relative;
+    align-content: center;
+}

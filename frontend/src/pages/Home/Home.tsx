@@ -11,6 +11,7 @@ import ChooseUs from "../../components/ChooseUsComponent/ChooseUs"
 import TourTypeComponent from "../../components/TourTypeComponent/TourTypeComponent"
 import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent"
 import TravelGuideComponent from "../../components/TravelGuideComponent/TravelGuideComponent"
+import IconsComponent from "../../components/IconsComponent/IconsComponent"
 
 const Home = () => {
   return (
@@ -85,6 +86,9 @@ const Home = () => {
             <TravelGuideComponent />
             <TravelGuideComponent />
             <TravelGuideComponent />
+          </div>
+          <div className={styles.iconsComponent}>
+            <IconsComponent />
           </div>
         </div>
         <Footer />
