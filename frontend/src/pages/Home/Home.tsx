@@ -9,6 +9,7 @@ import StatisticsComponent from "../../components/StatisticsComponent/Statistics
 import TopAttractionsComponent from "../../components/TopAttractionsComponent/TopAttractionsComponent"
 import ChooseUs from "../../components/ChooseUsComponent/ChooseUs"
 import TourTypeComponent from "../../components/TourTypeComponent/TourTypeComponent"
+import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent"
 
 const Home = () => {
   return (
@@ -66,6 +67,9 @@ const Home = () => {
           <TourTypeComponent />
           <TourTypeComponent />
           <TourTypeComponent />
+        </div>
+        <div className={styles.testimonials}>
+          <TestimonialsComponent />
         </div>
         <Footer />
     </>
