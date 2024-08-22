@@ -1,0 +1,36 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Trip {
+  id              String   @id @default(uuid())  
+  destination     String   
+  start_date      DateTime 
+  travel_time     String   
+  total_value     Float    
+  tour_type       String  
+  reviews         Int      
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String 
+  date_of_include DateTime?      @default(now())
+  updated_at      DateTime?      @default(now())
+
+  @@map("Trips")
+}
+
+model User {
+  id              String         @id
+  email           String         @unique
+  name            String?
+  last_name       String?
+  trips           Trip[]
+  date_of_include DateTime?      @default(now())
+  updated_at      DateTime?      @updatedAt
+
+  @@map("Users")
+}
