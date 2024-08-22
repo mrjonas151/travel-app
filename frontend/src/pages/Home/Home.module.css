@@ -87,3 +87,12 @@
     justify-content: center;
     position: relative;
 }
+
+.tourTypes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

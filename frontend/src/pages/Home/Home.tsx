@@ -8,6 +8,7 @@ import PopularToursComponent from "../../components/PopularToursComponent/Popula
 import StatisticsComponent from "../../components/StatisticsComponent/StatisticsComponent"
 import TopAttractionsComponent from "../../components/TopAttractionsComponent/TopAttractionsComponent"
 import ChooseUs from "../../components/ChooseUsComponent/ChooseUs"
+import TourTypeComponent from "../../components/TourTypeComponent/TourTypeComponent"
 
 const Home = () => {
   return (
@@ -54,7 +55,18 @@ const Home = () => {
         <div className={styles.chooseUs}>
           <ChooseUs />
         </div>
-        
+        <div className={styles.popularTours}>
+          <h2>Browse By Category</h2>
+          <h1>Pick A Tour Type</h1>
+        </div>
+        <div className={styles.tourTypes}>
+          <TourTypeComponent />
+          <TourTypeComponent />
+          <TourTypeComponent />
+          <TourTypeComponent />
+          <TourTypeComponent />
+          <TourTypeComponent />
+        </div>
         <Footer />
     </>
   )

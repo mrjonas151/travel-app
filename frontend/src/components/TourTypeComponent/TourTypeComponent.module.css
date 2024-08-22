@@ -1,0 +1,54 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.content h2{
+    color: #081134;
+}
+
+.icon{
+    color: #081134;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(248, 77, 80, 0.8);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.content p{
+    color: gray;
+    font-size: 1rem;
+    position: relative;
+    bottom: 2px;
+}
+
+.price{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.price strong{
+    font-family: 'Kaushan Script', cursive;
+    color: #f84d50;
+    font-size: 18px;
+    
+}
+
+.price p{
+    color: gray;
+    font-size: 1rem;
+    position: relative;
+    top: 4px;
+}
