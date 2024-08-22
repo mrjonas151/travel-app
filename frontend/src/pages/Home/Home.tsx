@@ -6,6 +6,8 @@ import air_balloon from '../../assets/air_balloon.png'
 import TextHome from "../../components/TextHome/TextHome"
 import PopularToursComponent from "../../components/PopularToursComponent/PopularToursComponent"
 import StatisticsComponent from "../../components/StatisticsComponent/StatisticsComponent"
+import TopAttractionsComponent from "../../components/TopAttractionsComponent/TopAttractionsComponent"
+import ChooseUs from "../../components/ChooseUsComponent/ChooseUs"
 
 const Home = () => {
   return (
@@ -40,6 +42,17 @@ const Home = () => {
         <div className={styles.popularTours}>
           <h2>Destination</h2>
           <h1>Top Attractions Destination</h1>
+        </div>
+        <div className={styles.topAttractionsContainer}>
+          <TopAttractionsComponent />
+          <TopAttractionsComponent />
+          <TopAttractionsComponent />
+          <TopAttractionsComponent />
+          <TopAttractionsComponent />
+          <TopAttractionsComponent />
+        </div>
+        <div className={styles.chooseUs}>
+          <ChooseUs />
         </div>
         
         <Footer />

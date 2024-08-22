@@ -1,0 +1,36 @@
+.container {
+    position: relative;
+    width: 240px;
+    height: 215px;
+}
+
+.imageWrapper {
+    position: relative;
+}
+
+.imageWrapper img {
+    width: 100%;
+    filter: brightness(0.7);
+    margin-top: 20px;
+}
+
+.textOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: white;
+    padding: 10px 10px;
+}
+
+.textOverlay p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.textOverlay h3 {
+    margin: 0;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: normal;
+}
