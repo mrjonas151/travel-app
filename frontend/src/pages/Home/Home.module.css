@@ -35,6 +35,12 @@
     filter: brightness(0.3);
 }
 
+.topDestinationContainer{
+    background-color: rgb(228, 228, 228);
+    height: 80vh;
+    margin-bottom: 10vh;
+}
+
 .popularTours {
     display: flex;
     flex-direction: column;
@@ -98,7 +104,22 @@
 }
 
 .testimonials{
+    display: flex;
+    background-color: rgb(228, 228, 228);
+    height: 80vh;
+    margin-bottom: 10vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.travelGuideContainer{
+    padding-left: 8%;
     padding-top: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 10vh;
-    margin-left: 5vh;
+    flex-wrap: wrap;
+    gap: 40px;
 }

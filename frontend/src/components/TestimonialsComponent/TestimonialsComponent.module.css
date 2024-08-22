@@ -58,7 +58,7 @@
     font-family: 'Kaushan Script', cursive;
     font-weight: normal;
     margin-bottom: 10px;
-    margin-left: 20%;
+    margin-left: 30%;
 }
 
 .text h1{
@@ -67,6 +67,7 @@
     font-weight: 900;
     width: 80%;
     margin-bottom: 15px;
+    margin-left: 7%;
 }
 
 .text p{

@@ -10,6 +10,7 @@ import TopAttractionsComponent from "../../components/TopAttractionsComponent/To
 import ChooseUs from "../../components/ChooseUsComponent/ChooseUs"
 import TourTypeComponent from "../../components/TourTypeComponent/TourTypeComponent"
 import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent"
+import TravelGuideComponent from "../../components/TravelGuideComponent/TravelGuideComponent"
 
 const Home = () => {
   return (
@@ -41,18 +42,21 @@ const Home = () => {
           <StatisticsComponent number={"12k+"} text={"Total Travelers"} />
           <StatisticsComponent number={"7k+"} text={"Positive Reviews"} />
         </div>
-        <div className={styles.popularTours}>
-          <h2>Destination</h2>
-          <h1>Top Attractions Destination</h1>
+        <div className={styles.topDestinationContainer}>
+          <div className={styles.popularTours}>
+            <h2>Destination</h2>
+            <h1>Top Attractions Destination</h1>
+          </div>
+          <div className={styles.topAttractionsContainer}>
+            <TopAttractionsComponent />
+            <TopAttractionsComponent />
+            <TopAttractionsComponent />
+            <TopAttractionsComponent />
+            <TopAttractionsComponent />
+            <TopAttractionsComponent />
+          </div>
         </div>
-        <div className={styles.topAttractionsContainer}>
-          <TopAttractionsComponent />
-          <TopAttractionsComponent />
-          <TopAttractionsComponent />
-          <TopAttractionsComponent />
-          <TopAttractionsComponent />
-          <TopAttractionsComponent />
-        </div>
+        
         <div className={styles.chooseUs}>
           <ChooseUs />
         </div>
@@ -70,6 +74,18 @@ const Home = () => {
         </div>
         <div className={styles.testimonials}>
           <TestimonialsComponent />
+        </div>
+        <div >
+          <div className={styles.popularTours}>
+            <h2>Updates</h2>
+            <h1>Latest Travel Guide</h1>
+          </div>
+          <div className={styles.travelGuideContainer}>
+            <TravelGuideComponent />
+            <TravelGuideComponent />
+            <TravelGuideComponent />
+            <TravelGuideComponent />
+          </div>
         </div>
         <Footer />
     </>
