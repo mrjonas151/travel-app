@@ -1,8 +1,17 @@
+.mainContainer{
+    align-content: center;
+    align-items: center;
+    height: 25vh;
+    width: 14%;
+    border: 2px solid #d3d3d3;
+}
+
 .content{
     display: flex;
     flex-direction: column;
     gap: 5px;
     position: relative;
+    padding-left: 10%;
 }
 
 .content h2{
@@ -17,7 +26,6 @@
 .overlay {
     position: absolute;
     top: 0;
-    left: 0;
     width: 30px;
     height: 30px;
     background-color: rgba(248, 77, 80, 0.8);
@@ -51,4 +59,5 @@
     font-size: 1rem;
     position: relative;
     top: 4px;
+    padding-left: 10%;
 }

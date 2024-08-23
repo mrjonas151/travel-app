@@ -3,7 +3,7 @@ import { MdBackpack } from 'react-icons/md';
 
 const TourTypeComponent = () => {
   return (
-    <div>
+    <div className={styles.mainContainer}>
         <div className={styles.content}>
             <div className={styles.overlay}></div>
             <MdBackpack size={50} className={styles.icon} />

@@ -1,7 +1,6 @@
 .mainContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: start;
     width: 100%;
 }
@@ -10,7 +9,6 @@
     width: 300px;
     height: 300px;
     object-fit: cover;
-    margin-bottom: 12px;
 }
 
 .mainContainer p{
@@ -18,8 +16,25 @@
     margin-bottom: 7px;
 }
 
+.country{
+    margin-top: 12px;
+    position: relative;
+    left: -20%;
+}
+
+.textsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #f3f3f3;
+    width: 78.8%;
+}
+
 .titleContainer{
-    width: 70%;
+    width: 90%;
+    position: relative;
+    right: -3%;
 }
 
 .stars{
@@ -32,6 +47,8 @@
     background-color: #f84d50;
     border-radius: 7px;
     margin-right: 10px;
+    position: relative;
+    left: -15%;
 }
 
 .stars img{
@@ -58,6 +75,12 @@
 
 .reviewP{
     margin-top: 2.7vh;
+    position: relative;
+    left: -16%;
+}
+
+.reviewQ {
+    margin-top: 2.7vh;
 }
 
 .firstReview{
@@ -77,6 +100,7 @@
     height: 15px;
     margin-right: 4px;
     margin-top: 3.1vh;
+    margin-bottom: 12px;
 }
 
 .price{
@@ -91,8 +115,12 @@
 .price strong{
     font-size: 1.2rem;
     font-family: 'Kaushan Script', cursive;
+    margin-bottom: 3px;
 }
 
 .price p{
     font-size: 1rem;
+    margin-bottom: 3px;
+    position: relative;
+    left: -10%;
 }

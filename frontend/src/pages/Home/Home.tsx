@@ -35,7 +35,6 @@ const Home = () => {
           <PopularToursComponent />
           <PopularToursComponent />
           <PopularToursComponent />
-          <PopularToursComponent />
         </div>
         <div className={styles.statistics}>
           <StatisticsComponent number={"120+"} text={"Total Destination"} />
