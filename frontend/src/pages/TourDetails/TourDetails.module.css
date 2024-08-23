@@ -1,0 +1,15 @@
+.mainContainer{
+    padding: 10%;
+}
+
+
+.alsoLike h1{
+    text-align: center;
+    color: #081134;
+    font-weight: 900;
+}
+
+.tours{
+    display: flex;
+    flex-direction: row;
+}
