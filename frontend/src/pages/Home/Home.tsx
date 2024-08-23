@@ -43,18 +43,20 @@ const Home = () => {
           <StatisticsComponent number={"7k+"} text={"Positive Reviews"} />
         </div>
         <div className={styles.topDestinationContainer}>
-          <div className={styles.popularTours}>
-            <h2>Destination</h2>
-            <h1>Top Attractions Destination</h1>
-          </div>
-          <div className={styles.topAttractionsContainer}>
-            <TopAttractionsComponent />
-            <TopAttractionsComponent />
-            <TopAttractionsComponent />
-            <TopAttractionsComponent />
-            <TopAttractionsComponent />
-            <TopAttractionsComponent />
-          </div>
+            <div className={styles.mainPopular}>
+              <div className={styles.popularTours}>
+                <h2>Destination</h2>
+                  <h1>Top Attractions Destination</h1>
+                </div>
+                <div className={styles.topAttractionsContainer}>
+                  <div className={styles.item1}><TopAttractionsComponent /></div>
+                  <div className={styles.item2}><TopAttractionsComponent /></div>
+                  <div className={styles.item3}><TopAttractionsComponent /></div>
+                  <div className={styles.item4}><TopAttractionsComponent /></div>
+                  <div className={styles.item5}><TopAttractionsComponent /></div>
+                  <div className={styles.item6}><TopAttractionsComponent /></div>
+                </div>
+            </div>
         </div>
         
         <div className={styles.chooseUs}>

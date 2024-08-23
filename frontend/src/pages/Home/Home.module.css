@@ -36,7 +36,6 @@
 }
 
 .topDestinationContainer{
-    background-color: rgb(228, 228, 228);
     height: 80vh;
     margin-bottom: 10vh;
 }
@@ -78,16 +77,53 @@
     padding-right: 6%;
 }
 
-.topAttractionsContainer {
+.mainPopular{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(228, 228, 228);
+}
+
+.topAttractionsContainer {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+        'img1 img1 img1 img2 img2 img2 img3 img3 img3 img4 img4 img4'
+        'img5 img5 img5 img5 img6 img6 img6 img6 img6 img4 img4 img4';
+    gap: 20px;
     padding: 0 10%;
-    flex-wrap: wrap;
-    padding-bottom: 15vh;
+}
+
+.item1 {
+    grid-area: img1;
+}
+
+.item2 {
+    grid-area: img2;
+}
+
+.item3 {
+    grid-area: img3;
+}
+
+.item4 {
+    grid-area: img4;
+    height: 100%;
+    width: 100%;
+}
+
+.item5 {
+    grid-area: img5;
+}
+
+.item6 {
+    grid-area: img6;
 }
 
 .chooseUs{
+    padding-top: 25vh;
     display: flex;
     flex-direction: column;
     align-items: center;

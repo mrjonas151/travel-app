@@ -1,7 +1,7 @@
 .container {
     position: relative;
-    width: 240px;
-    height: 215px;
+    width: 100%;
+    height: auto;
 }
 
 .imageWrapper {
@@ -10,8 +10,8 @@
 
 .imageWrapper img {
     width: 100%;
+    height: auto;
     filter: brightness(0.7);
-    margin-top: 20px;
 }
 
 .textOverlay {
@@ -21,7 +21,7 @@
     width: 100%;
     text-align: left;
     color: white;
-    padding: 10px 10px;
+    padding: 10px;
 }
 
 .textOverlay p {
