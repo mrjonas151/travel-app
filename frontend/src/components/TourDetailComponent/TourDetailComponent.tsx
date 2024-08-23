@@ -3,7 +3,7 @@ import Booking_image from '../../assets/Booking_image.jpg'
 import Share_tourDetail from '../../assets/Share_tourDetail.png'
 import Heart_tourDetail from '../../assets/Heart_tourDetail.png'
 import Location_tourDetail from '../../assets/Location_tourDetail.png'
-import { FaVideo, FaImage } from 'react-icons/fa'
+import { FaVideo, FaImage, FaStar } from 'react-icons/fa'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 
 const TourDetailComponent = () => {
@@ -63,7 +63,7 @@ const TourDetailComponent = () => {
             <div className={styles.maps}>
               {isLoaded ? (
               <GoogleMap
-                mapContainerStyle={{width: '100%', height: '100%'}}
+                mapContainerStyle={{width: '1145px', height: '100%'}}
                 center={{
                   lat: -27.590824,
                   lng: -48.551262
@@ -85,7 +85,19 @@ const TourDetailComponent = () => {
           </div>
         </div>
         <div className={styles.reviewsContainer}>
-            
+            <h2>Average Reviews</h2>
+            <div className={styles.mainRate}>
+              <div className={styles.rate}>
+                <h1>4.8</h1>
+                <span><FaStar className={styles.iconStar}/>Excelent</span>
+              </div>
+            </div>
+            <div>
+              <h3>Showing 1 review</h3>
+              <div className={styles.mainCommentContainer}>
+
+              </div>
+            </div>
         </div>
       </div>
     </div>
