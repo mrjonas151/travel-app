@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const FilterByComponent = () => {
 
-    const [price, setPrice] = useState(150);
+    const [price, setPrice] = useState(0);
 
     const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(event.target.value);

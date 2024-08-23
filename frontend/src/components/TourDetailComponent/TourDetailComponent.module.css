@@ -11,7 +11,7 @@
 
 .imageContainer {
     position: relative;
-    width: 60%;
+    width: 75%;
 }
 
 .image {
@@ -26,6 +26,14 @@
     right: 15px;
     display: flex;
     gap: 10px;
+}
+
+.buttonIcon{
+    width: 15px;
+    height: 15px;
+    margin-left: 8px;
+    position: relative;
+    top: 2.3px;
 }
 
 .button {
@@ -49,7 +57,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
-    width: 60%;
+    width: 75%;
 }
 
 .locate{
@@ -72,11 +80,27 @@
     background-color: #cecdcd;
     margin: 20px 0;
     border: none;
-    width: 60%;
+    width: 75%;
 }
 
-.locate p{
-    color: #f84d50;
+.rowItems{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+    margin-top: 5px;
+}
+.rowItems span,
+.rowItems strong {
+    flex: 1;
+}
+
+.rowItems strong{
+    color: #081134;
+}
+
+.locate p, .priceColor{
+    color: #f84d50 !important;
 }
 
 .titleH1{
@@ -94,4 +118,47 @@
 
 .icon:hover{
     background-color: #f84d50;
+}
+
+.OverviewContainer{
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.OverviewContainer h2{
+    color: #081134;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.OverviewContainer p{
+    color: #888888;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.OverviewContainer p:nth-of-type(2) {
+    margin-top: 30px;
+}
+
+.mapContainer{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 3rem;
+}
+
+.mapContainer h2{
+    color: #081134;
+    font-weight: 900;
+}
+
+.maps{
+    width: 100%;
+    height: 500px;
+    margin-top: 10px;
 }
