@@ -1,7 +1,12 @@
 .mainContainer{
-    padding: 10%;
+    padding-right: 10%;
+    padding-left: 10%;
 }
 
+.details{
+    display: flex;
+    flex-direction: column;
+}
 
 .alsoLike h1{
     text-align: center;

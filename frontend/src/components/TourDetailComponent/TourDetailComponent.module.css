@@ -1,0 +1,49 @@
+.image {
+    width: 800px;
+    height: 450px;
+    object-fit: cover;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.placeDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 52%;
+}
+
+.locate{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.share{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.locate p{
+    color: #f84d50;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.icon:hover{
+    background-color: #f84d50;
+}
