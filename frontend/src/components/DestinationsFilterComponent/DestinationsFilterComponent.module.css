@@ -1,0 +1,44 @@
+.mainContainer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    width: 250px;
+    position: relative;
+    left: -3%;
+}
+
+.header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #081134;
+    margin-bottom: 10px;
+}
+
+.continentContainer {
+    margin-bottom: 20px;
+}
+
+.continentHeader {
+    font-size: 16px;
+    font-weight: bold;
+    color: #081134;
+    margin-bottom: 10px;
+}
+
+.countriesList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.countryItem {
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    margin-right: 10px;
+}
+
+.checkbox+label {
+    color: #081134;
+    font-size: 16px;
+}

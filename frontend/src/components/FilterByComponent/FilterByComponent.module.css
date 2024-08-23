@@ -1,0 +1,79 @@
+.mainContainer {
+    background-color: #f1f1f1;
+    width: 250px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+    left: -3%;
+}
+
+.filterHeader {
+    font-size: 23px;
+    font-weight: bold;
+    color: #081134;
+    margin-left: 10px;
+}
+
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.slider {
+    width: 100%;
+    margin: 0 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    background: linear-gradient(to right, #f84d50 0%, #ddd 0%);
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #f84d50;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #f84d50;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.priceRange {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    color: #081134;
+    padding: 0 5%;
+}
+
+
+.submitButton {
+    background-color: #f84d50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    height: 40px;
+    width: 40%;
+    margin-left: 10px;
+}

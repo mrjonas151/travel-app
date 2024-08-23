@@ -1,5 +1,5 @@
 .input {
-    width: 100%;
+    width: 315px;
     padding: 10px;
     margin: 1px 0;
     border: 1px solid black;
@@ -7,17 +7,13 @@
     box-sizing: border-box;
     outline: none;
     box-shadow: none;
+    padding-left: 40px;
 }
 
 .inputContainer {
     position: relative;
     display: flex;
     align-items: center;
-}
-
-.input {
-    padding-left: 40px;
-    width: 100%;
 }
 
 .icon {
