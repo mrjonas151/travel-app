@@ -19,20 +19,21 @@
 .country{
     margin-top: 12px;
     position: relative;
-    left: -20%;
+    right: -3%;
 }
 
 .textsContainer{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    align-items: flex-start;
+    width: 300px;
     background-color: #f3f3f3;
-    width: 78.8%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .titleContainer{
-    width: 90%;
+    width: 100%;
     position: relative;
     right: -3%;
 }
@@ -69,8 +70,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 70%;
+    width: 85%;
     align-items: center;
+    position: relative;
+    right: -10%;
 }
 
 .reviewP{
@@ -110,17 +113,20 @@
     justify-content: space-between;
     width: 70%;
     margin-top: 20px;
+    
 }
 
 .price strong{
     font-size: 1.2rem;
     font-family: 'Kaushan Script', cursive;
     margin-bottom: 3px;
+    position: relative;
+    right: -35%;
 }
 
 .price p{
     font-size: 1rem;
     margin-bottom: 3px;
     position: relative;
-    left: -10%;
+    left: 3%;
 }
