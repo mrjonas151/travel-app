@@ -13,7 +13,15 @@ import TestimonialsComponent from "../../components/TestimonialsComponent/Testim
 import TravelGuideComponent from "../../components/TravelGuideComponent/TravelGuideComponent"
 import IconsComponent from "../../components/IconsComponent/IconsComponent"
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import { Pagination } from 'swiper/modules';
+
 const Home = () => {
+
   return (
     <>
         <Header />
@@ -34,12 +42,23 @@ const Home = () => {
           </div>
           <h1>Most Popular Tours</h1>
         </div>
-        <div className={styles.places}>
-          <PopularToursComponent />
-          <PopularToursComponent />
-          <PopularToursComponent />
-          <PopularToursComponent />
-        </div>
+        <div className={styles.swiperWrapper}>
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={4}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className={styles.swiperContainer}
+          >
+            <SwiperSlide><PopularToursComponent /></SwiperSlide>
+            <SwiperSlide><PopularToursComponent /></SwiperSlide>
+            <SwiperSlide><PopularToursComponent /></SwiperSlide>
+            <SwiperSlide><PopularToursComponent /></SwiperSlide>
+            <SwiperSlide><PopularToursComponent /></SwiperSlide>
+            <SwiperSlide><PopularToursComponent /></SwiperSlide>
+          </Swiper>
+          <div className="swiper-pagination"></div>
+          </div>
         <div className={styles.horizontalLine}></div>
         <div className={styles.statistics}>
           <StatisticsComponent number={"120+"} text={"Total Destination"} />

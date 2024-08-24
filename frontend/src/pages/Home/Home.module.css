@@ -64,15 +64,6 @@
     color: #081134;
 }
 
-.places{
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    padding: 0 10%;
-    padding-bottom: 15vh;
-}
-
 .horizontalLine{
     border: 1px solid #f1f1f1;
     width: 76%;
@@ -193,4 +184,13 @@
     width: 120px;
     background: linear-gradient(#c9c9c9, #c9c9c9) center/100% 1px no-repeat;
     margin: 0 15px;
+}
+
+
+.swiperWrapper {
+    padding-top: 50px;
+    position: relative;
+    padding-bottom: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
