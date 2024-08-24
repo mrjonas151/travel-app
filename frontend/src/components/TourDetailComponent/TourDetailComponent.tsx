@@ -6,6 +6,7 @@ import Location_tourDetail from '../../assets/Location_tourDetail.png'
 import { FaVideo, FaImage, FaStar } from 'react-icons/fa'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 import BookingForm from '../BookingForm/BookingForm'
+import ReviewForm from '../ReviewForm/ReviewForm'
 
 const TourDetailComponent = () => {
 
@@ -100,11 +101,16 @@ const TourDetailComponent = () => {
               </div>
             </div>
             <div>
-              <h3>Showing 1 review</h3>
-              <div className={styles.mainCommentContainer}>
-
+              <div className={styles.showingNumber}>
+                <h3>Showing 1 review</h3>
               </div>
-            </div>
+              <div className={styles.mainCommentContainer}>
+                <h1>Ok here the Sindy Simmons comment</h1>
+              </div>
+              <div className={styles.reviewForm}>
+                <ReviewForm />
+              </div>
+            </div>  
         </div>
       </div>
     </div>

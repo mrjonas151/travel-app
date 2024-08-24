@@ -170,6 +170,10 @@
     margin-top: 10px;
 }
 
+.reviewForm{
+    padding-top: 5vh;
+}
+
 .reviewsContainer{
     padding-top: 5vh;
 }
@@ -213,7 +217,10 @@
 }
 
 
-
+.showingNumber{
+    padding-top: 5vh;
+    color: #081134;
+}
 
 .mainCommentContainer{
     display: flex;

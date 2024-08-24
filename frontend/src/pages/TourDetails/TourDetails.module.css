@@ -8,6 +8,10 @@
     flex-direction: column;
 }
 
+.alsoLike{
+    padding-top: 10vh;
+}
+
 .alsoLike h1{
     text-align: center;
     color: #081134;
@@ -15,6 +19,8 @@
 }
 
 .tours{
+    padding-top: 3vh;
     display: flex;
     flex-direction: row;
+    padding-bottom: 15vh;
 }

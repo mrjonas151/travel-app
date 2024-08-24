@@ -1,0 +1,91 @@
+.container {
+    width: 75%;
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin: 20px auto;
+    position: relative;
+    right: 12rem;
+    color: #081134;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 12px;
+}
+
+.rowReview{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ratingGroup {
+    margin-bottom: 15px;
+}
+
+.ratingGroup label{
+    font-size: 1.1rem;
+}
+
+.stars {
+    display: flex;
+}
+
+.star {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ddd;
+    margin-right: 5px;
+}
+
+.starSelected {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ff5252;
+    margin-right: 5px;
+}
+
+.inputGroup {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-top: 12px;
+}
+
+.input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: 0;
+    border: none;
+    height: 50px;
+}
+
+.textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    outline: 0;
+}
+
+.submitButton {
+    width: 15%;
+    height: 50px;
+    padding: 10px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submitButton:hover {
+    background-color: #ff7777;
+}
