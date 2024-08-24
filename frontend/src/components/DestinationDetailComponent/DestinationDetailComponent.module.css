@@ -1,0 +1,42 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    color: #081134;
+}
+
+.rowContent{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    align-items: flex-start;
+}
+
+.bigImage{
+    height: 500px;
+    object-fit: cover;
+    width: 95%;
+}
+
+.otherImages{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    gap: 23px;
+}
+
+.smallImage{
+    width: 22%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.map {
+    background-color: black;
+    width: 35%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-shrink: 0;
+}

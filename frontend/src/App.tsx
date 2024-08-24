@@ -4,12 +4,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Home from './pages/Home/Home';
 import Error from './pages/Error/Error';
-import Destination from './pages/Destination/Destination';
-import DestinationDetails from './pages/DestinationDetails/DestinationDetails';
+
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import TourDetails from './pages/TourDetails/TourDetails';
 import TourPackage from './pages/TourPackage/TourPackage';
+import Destination from './pages/Destination/Destination';
+import DestinationDetails from './pages/DestinationDetails/DestinationDetails';
 
 function App() {
 

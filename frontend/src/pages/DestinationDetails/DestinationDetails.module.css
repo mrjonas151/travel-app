@@ -1,13 +1,4 @@
-.searchContainer {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    left: 20%;
-    margin-top: 20px;
-    z-index: 1;
-    margin-top: -55px;
-}
-
-.content {
-    padding: 10vh 10%;
+.destinationComponent{
+    padding-right: 10%;
+    padding-left: 10%;
 }
