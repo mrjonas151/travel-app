@@ -5,6 +5,7 @@ import Heart_tourDetail from '../../assets/Heart_tourDetail.png'
 import Location_tourDetail from '../../assets/Location_tourDetail.png'
 import { FaVideo, FaImage, FaStar } from 'react-icons/fa'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
+import BookingForm from '../BookingForm/BookingForm'
 
 const TourDetailComponent = () => {
 
@@ -16,13 +17,19 @@ const TourDetailComponent = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.imageContainer}>
-        <img src={Booking_image} className={styles.image} alt="Booking" />
-        <div className={styles.buttonContainer}>
-          <button className={styles.button}>Video<FaVideo className={styles.buttonIcon}/></button>
-          <button className={styles.button}>Gallery<FaImage className={styles.buttonIcon}/></button>
+      <div className={styles.rowBook}>
+        <div className={styles.imageContainer}>
+          <img src={Booking_image} className={styles.image} alt="Booking" />
+          <div className={styles.buttonContainer}>
+            <button className={styles.button}>Video<FaVideo className={styles.buttonIcon}/></button>
+            <button className={styles.button}>Gallery<FaImage className={styles.buttonIcon}/></button>
+          </div>
         </div>
+        <div className={styles.bookComponent}>
+                <BookingForm />
+            </div>
       </div>
+      
       <div className={styles.placeDetails}>
         <div className={styles.locate}>
           <img src={Location_tourDetail} className={styles.icon} alt="Location" />

@@ -65,16 +65,27 @@
     margin-top: 50px;
     margin-bottom: 20px;
     padding: 0 10%;
+    padding-bottom: 15vh;
+}
+
+.horizontalLine{
+    border: 1px solid #f1f1f1;
+    width: 76%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 2%;
 }
 
 .statistics{
-    padding-top: 15vh;
+    padding-top: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 50px;
-    padding-left: 6%;
-    padding-right: 6%;
+    padding-right: 10%;
+    padding-left: 5%;
 }
 
 .mainPopular{
@@ -129,6 +140,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    padding-bottom: 10vh;
 }
 
 .tourTypes{
@@ -151,7 +163,7 @@
 
 .travelGuideContainer{
     padding-left: 8%;
-    padding-top: 10vh;
+    padding-top: 2vh;
     display: flex;
     flex-direction: row;
     align-items: center;

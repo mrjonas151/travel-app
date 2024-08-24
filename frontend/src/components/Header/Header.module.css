@@ -1,11 +1,12 @@
 .mainContainer{
-    padding: 1em;
+    padding: 0;
 }
 .contactInfo{
     display: flex;
     justify-content: space-between;
     color: white;
     padding: 0.5em;
+    background-color: #f2f2f2;
 }
 
 .number{

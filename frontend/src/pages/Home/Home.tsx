@@ -36,6 +36,7 @@ const Home = () => {
           <PopularToursComponent />
           <PopularToursComponent />
         </div>
+        <div className={styles.horizontalLine}></div>
         <div className={styles.statistics}>
           <StatisticsComponent number={"120+"} text={"Total Destination"} />
           <StatisticsComponent number={"500+"} text={"Travel Packages"} />
@@ -62,6 +63,7 @@ const Home = () => {
         <div className={styles.chooseUs}>
           <ChooseUs />
         </div>
+        <div className={styles.horizontalLine}></div>
         <div className={styles.popularTours}>
           <h2>Browse By Category</h2>
           <h1>Pick A Tour Type</h1>
