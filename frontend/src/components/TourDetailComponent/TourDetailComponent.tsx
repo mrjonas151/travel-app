@@ -17,6 +17,12 @@ const TourDetailComponent = () => {
     googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY || '',
   })
 
+  const scrollToMap = () => {
+    window.scrollBy({
+      top: 700,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className={styles.mainContainer}>
@@ -37,7 +43,7 @@ const TourDetailComponent = () => {
         <div className={styles.locate}>
           <img src={Location_tourDetail} className={styles.icon} alt="Location" />
           <span>Budapest, Hungary</span>
-          <p>View on map</p>
+          <p onClick={scrollToMap} style={{ cursor: 'pointer' }}>View on map</p>
         </div>
         <div className={styles.share}>
           <img src={Share_tourDetail} className={styles.icon} alt="Share" />
@@ -61,7 +67,7 @@ const TourDetailComponent = () => {
           <strong>25</strong>      
           <strong>12+</strong>     
           <strong>Adventure, Beaches</strong>      
-          <strong>4.8 (15 Reviews)</strong>
+          <strong><span className={styles.starPink}>★</span>4.8 (15 Reviews)</strong>
         </div>
         <div className={styles.OverviewContainer}>
           <h2>Overview</h2>
