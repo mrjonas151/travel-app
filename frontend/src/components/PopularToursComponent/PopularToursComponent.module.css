@@ -112,7 +112,7 @@
     align-items: center;
     justify-content: space-between;
     width: 70%;
-    margin-top: 20px;
+    margin-top: 8px;
     
 }
 
@@ -129,4 +129,10 @@
     margin-bottom: 3px;
     position: relative;
     left: 3%;
+}
+
+.horizontalLine {
+    margin-top: 5px;
+    border: 1px solid rgba(201, 201, 201, 0.5);
+    width: 100%;
 }

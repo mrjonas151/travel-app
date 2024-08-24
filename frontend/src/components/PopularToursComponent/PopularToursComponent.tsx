@@ -26,6 +26,7 @@ const PopularToursComponent = () => {
                     <p className={styles.reviewQ}>7 days</p>
                 </div>
             </div>
+            <div className={styles.horizontalLine}></div>
             <div className={styles.price}>
                 <p>Starting from</p>
                 <strong>$520</strong>

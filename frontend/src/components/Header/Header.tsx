@@ -35,7 +35,7 @@ const Header = () => {
           <ul className={styles.list}>
               <li className={styles.item}><Link to="/home">Home</Link></li>
               <li className={styles.item}><Link to="/about">About</Link></li>
-              <li className={styles.item}><Link to="/tour-packages">Tours</Link></li>
+              <li className={styles.item}><Link to="/tour-package">Tours</Link></li>
               <li className={styles.item}><Link to="/destination">Destination</Link></li>
               <li className={styles.item}><Link to="/blog">Blog</Link></li>
               <li className={styles.item}><Link to="/pages">Pages</Link></li>

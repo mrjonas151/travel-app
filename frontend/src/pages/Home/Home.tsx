@@ -27,7 +27,11 @@ const Home = () => {
           <SearchTravel />
         </div>
         <div className={styles.popularTours}>
-          <h2>Tours</h2>
+          <div className={styles.rowLine}>
+            <div className={styles.horizontalLineTexts}></div>
+            <h2>Tours</h2>
+            <div className={styles.horizontalLineTexts}></div>
+          </div>
           <h1>Most Popular Tours</h1>
         </div>
         <div className={styles.places}>
@@ -46,7 +50,11 @@ const Home = () => {
         <div className={styles.topDestinationContainer}>
             <div className={styles.mainPopular}>
               <div className={styles.popularTours}>
-                <h2>Destination</h2>
+                <div className={styles.rowLine}>
+                  <div className={styles.horizontalLineTexts}></div>
+                  <h2>Destination</h2>
+                  <div className={styles.horizontalLineTexts}></div>
+                </div>
                   <h1>Top Attractions Destination</h1>
                 </div>
                 <div className={styles.topAttractionsContainer}>
@@ -65,7 +73,11 @@ const Home = () => {
         </div>
         <div className={styles.horizontalLine}></div>
         <div className={styles.popularTours}>
-          <h2>Browse By Category</h2>
+          <div className={styles.rowLine}>
+            <div className={styles.horizontalLineTexts}></div>
+            <h2>Browse By Category</h2>
+            <div className={styles.horizontalLineTexts}></div>
+          </div>
           <h1>Pick A Tour Type</h1>
         </div>
         <div className={styles.tourTypes}>

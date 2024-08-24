@@ -48,6 +48,11 @@
     padding-top: 120px;
 }
 
+.rowLine{
+    display: flex;
+    flex-direction: row;
+}
+
 .popularTours h2{
     color: #f84d50;
     font-size: 2rem;
@@ -79,13 +84,14 @@
 }
 
 .statistics{
-    padding-top: 10vh;
+    padding-top: 5vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 50px;
     padding-right: 10%;
     padding-left: 5%;
+    padding-bottom: 4vh;
 }
 
 .mainPopular{
@@ -181,4 +187,10 @@
     height: 20vh;
     position: relative;
     align-content: center;
+}
+
+.horizontalLineTexts{
+    width: 120px;
+    background: linear-gradient(#c9c9c9, #c9c9c9) center/100% 1px no-repeat;
+    margin: 0 15px;
 }
