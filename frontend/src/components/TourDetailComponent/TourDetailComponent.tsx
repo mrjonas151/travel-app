@@ -7,6 +7,8 @@ import { FaVideo, FaImage, FaStar } from 'react-icons/fa'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 import BookingForm from '../BookingForm/BookingForm'
 import ReviewForm from '../ReviewForm/ReviewForm'
+import person from '../../assets/person.jpg'
+import white_star from '../../assets/white_star.png'
 
 const TourDetailComponent = () => {
 
@@ -105,7 +107,21 @@ const TourDetailComponent = () => {
                 <h3>Showing 1 review</h3>
               </div>
               <div className={styles.mainCommentContainer}>
-                <h1>Ok here the Sindy Simmons comment</h1>
+                <div className={styles.comment}>
+                  <img src={person} alt="User profile" className={styles.profilePic} />
+                  <div className={styles.commentContent}>
+                    <span className={styles.commentDate}>March 20, 2022</span>
+                    <strong className={styles.commentAuthor}>Sindy Simmons</strong>
+                    <div className={styles.firstReview}>
+                        <div className={styles.stars}>
+                            <img src={white_star} />
+                            <p>4.8</p>
+                        </div>
+                        <p className={styles.reviewP}>15 reviews</p>
+                    </div>
+                    <p className={styles.commentText}>This tour was absolutely amazing! The guide was knowledgeable and the sights were breathtaking. I highly recommend it to anyone looking to explore the beauty of the West Coast.</p>
+                  </div>
+                </div>
               </div>
               <div className={styles.reviewForm}>
                 <ReviewForm />

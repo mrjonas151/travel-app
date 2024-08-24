@@ -223,6 +223,7 @@
 }
 
 .mainCommentContainer{
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -230,4 +231,76 @@
     border: 1px solid #cecdcd;
     min-height: 220px;
     width: 75%;
+    justify-content: center;
+}
+
+.comment {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    width: 80%;
+}
+
+.profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.commentContent {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.commentDate {
+    font-size: 0.9rem;
+    color: #081134;
+}
+
+.commentAuthor {
+    font-weight: bold;
+    color: #081134;
+}
+
+.commentText {
+    color: #081134;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.firstReview {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    color: #FFF;
+    height: 25px;
+    width: 53px;
+    background-color: #f84d50;
+    border-radius: 7px;
+    margin-right: 10px;
+    position: relative;
+    bottom: 10px;
+}
+
+.stars img {
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.stars p {
+    color: #FFF;
+    font-size: 1rem;
+    margin-left: 5px;
+    margin-top: 3px;
 }
