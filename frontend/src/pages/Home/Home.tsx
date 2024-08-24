@@ -43,21 +43,24 @@ const Home = () => {
           <h1>Most Popular Tours</h1>
         </div>
         <div className={styles.swiperWrapper}>
-          <Swiper
-            spaceBetween={30}
-            slidesPerView={4}
-            pagination={{ clickable: true }}
-            modules={[Pagination]}
-            className={styles.swiperContainer}
-          >
+          <div className={styles.popularToursCarousel}>
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={4}
+              pagination={{ clickable: true }}
+              modules={[Pagination]}
+              className={styles.swiperContainer}
+            >
             <SwiperSlide><PopularToursComponent /></SwiperSlide>
             <SwiperSlide><PopularToursComponent /></SwiperSlide>
             <SwiperSlide><PopularToursComponent /></SwiperSlide>
             <SwiperSlide><PopularToursComponent /></SwiperSlide>
             <SwiperSlide><PopularToursComponent /></SwiperSlide>
             <SwiperSlide><PopularToursComponent /></SwiperSlide>
-          </Swiper>
-          <div className="swiper-pagination"></div>
+
+            </Swiper>
+            <div className="swiper-pagination"></div>
+          </div>
           </div>
         <div className={styles.horizontalLine}></div>
         <div className={styles.statistics}>
@@ -99,13 +102,26 @@ const Home = () => {
           </div>
           <h1>Pick A Tour Type</h1>
         </div>
-        <div className={styles.tourTypes}>
-          <TourTypeComponent />
-          <TourTypeComponent />
-          <TourTypeComponent />
-          <TourTypeComponent />
-          <TourTypeComponent />
-          <TourTypeComponent />
+        <div className={styles.swiperWrapperTourType}>
+          <div className={styles.TourTypeCarousel}>
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={6}
+              pagination={{ clickable: true }}
+              modules={[Pagination]}
+              className={styles.swiperContainer}
+            >
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+            </Swiper>
+            </div>
+          <div className="swiper-pagination"></div>
         </div>
         <div className={styles.testimonials}>
           <TestimonialsComponent />

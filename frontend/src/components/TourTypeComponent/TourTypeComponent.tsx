@@ -7,8 +7,10 @@ const TourTypeComponent = () => {
         <div className={styles.content}>
             <div className={styles.overlay}></div>
             <MdBackpack size={50} className={styles.icon} />
-            <h2>Adventure</h2>
-            <p>10 Tours+</p>
+            <div>
+              <h2>Adventure</h2>
+              <p>10 Tours+</p>
+            </div>
         </div>
         <div className={styles.price}>
             <p>From</p>

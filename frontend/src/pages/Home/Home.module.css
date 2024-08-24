@@ -186,11 +186,31 @@
     margin: 0 15px;
 }
 
-
 .swiperWrapper {
     padding-top: 50px;
     position: relative;
-    padding-bottom: 50px;
     padding-left: 10%;
     padding-right: 10%;
+}
+
+.swiperWrapperTourType {
+    padding-top: 50px;
+    position: relative;
+    padding-bottom: 90px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.popularToursCarousel{
+    width: 70vw;
+    height: 55vh;
+    display: flex;
+    margin: 4em auto;
+}
+
+.TourTypeCarousel{
+    width: 75vw;
+    height: 30vh;
+    display: flex;
+    margin: 4em auto;
 }

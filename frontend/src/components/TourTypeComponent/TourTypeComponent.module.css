@@ -2,14 +2,14 @@
     align-content: center;
     align-items: center;
     height: 25vh;
-    width: 14%;
+    width: 90%;
     border: 2px solid #d3d3d3;
 }
 
 .content{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 30px;
     position: relative;
     padding-left: 10%;
 }
@@ -35,7 +35,7 @@
 
 .content p{
     color: gray;
-    font-size: 1rem;
+    font-size: 1.1rem;
     position: relative;
     bottom: 2px;
 }
@@ -50,13 +50,13 @@
 .price strong{
     font-family: 'Kaushan Script', cursive;
     color: #f84d50;
-    font-size: 18px;
+    font-size: 1.2rem
     
 }
 
 .price p{
     color: gray;
-    font-size: 1rem;
+    font-size: 1.1rem;
     position: relative;
     top: 4px;
     padding-left: 10%;
