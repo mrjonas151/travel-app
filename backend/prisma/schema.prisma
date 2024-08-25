@@ -70,3 +70,15 @@ model Category{
 
   @@map("Category")
 }
+
+model Testimonials{
+  id              String @id @default(uuid())
+  url_image1      String 
+  url_image2      String 
+  url_image3      String 
+  comment         String 
+  name            String
+  profession      String
+
+  @@map("Testimonials")
+}

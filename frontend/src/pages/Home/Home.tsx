@@ -9,7 +9,7 @@ import StatisticsComponent from "../../components/StatisticsComponent/Statistics
 import TopAttractionsComponent from "../../components/TopAttractionsComponent/TopAttractionsComponent"
 import ChooseUs from "../../components/ChooseUsComponent/ChooseUs"
 import TourTypeComponent from "../../components/TourTypeComponent/TourTypeComponent"
-import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent"
+import TestimonialsComponent, { TestimonialComponentProps } from "../../components/TestimonialsComponent/TestimonialsComponent"
 import TravelGuideComponent from "../../components/TravelGuideComponent/TravelGuideComponent"
 import IconsComponent from "../../components/IconsComponent/IconsComponent"
 
@@ -30,6 +30,7 @@ const Home = () => {
   const [travelGuides, setTravelGuides] = useState<TravelGuideComponentProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [testimonials, setTestimonials] = useState<TestimonialComponentProps[]>([]);
 
   const getAllTours = async () => {
     try {
@@ -41,6 +42,17 @@ const Home = () => {
       setLoading(false);
     }
   };
+
+  const getAllTestimonials = async () => {
+    try {
+      const response = await api.get('/testimonials');
+      setTestimonials(response.data);
+    } catch (err) {
+      setError('Error fetching testimonials');
+    } finally {
+      setLoading(false);
+    }
+  }
 
     const getTravelGuides = async () => {
     try {
@@ -57,6 +69,7 @@ const Home = () => {
   useEffect(() => {
     getAllTours();
     getTravelGuides();
+    getAllTestimonials();
   }, []);
 
   if (loading) return <p>Waiting...</p>;
@@ -168,8 +181,28 @@ const Home = () => {
           <div className="swiper-pagination"></div>
         </div>
         <div className={styles.testimonials}>
-          <TestimonialsComponent />
-        </div>
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{ clickable: true}}
+              modules={[Pagination]}
+              className={styles.swiperContainerTesminonials}
+            >
+              {testimonials.map((testimonial, index) => (
+                <SwiperSlide key={index}>
+                  <TestimonialsComponent
+                    id={testimonial.id}
+                    url_image1={testimonial.url_image1}
+                    url_image2={testimonial.url_image2}
+                    url_image3={testimonial.url_image3}
+                    comment={testimonial.comment}
+                    name={testimonial.name}
+                    profession={testimonial.profession}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         <div >
           <div className={styles.popularTours}>
             <h2>Updates</h2>
