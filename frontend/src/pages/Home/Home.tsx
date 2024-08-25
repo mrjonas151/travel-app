@@ -129,12 +129,7 @@ const Home = () => {
                   <h1>Top Attractions Destination</h1>
                 </div>
                 <div className={styles.topAttractionsContainer}>
-                  <div className={styles.item1}><TopAttractionsComponent /></div>
-                  <div className={styles.item2}><TopAttractionsComponent /></div>
-                  <div className={styles.item3}><TopAttractionsComponent /></div>
-                  <div className={styles.item4}><TopAttractionsComponent /></div>
-                  <div className={styles.item5}><TopAttractionsComponent /></div>
-                  <div className={styles.item6}><TopAttractionsComponent /></div>
+                  <TopAttractionsComponent />
                 </div>
             </div>
         </div>

@@ -1,36 +1,140 @@
-.container {
-    position: relative;
+.cityGrid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 30px;
     width: 100%;
-    height: auto;
+    margin-top: 50px;
 }
 
-.imageWrapper {
+.cityCard1 {
     position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    width: 300px;
+    height: 250px;
+    cursor: pointer;
+
+    transition: transform 0.5s;
 }
 
-.imageWrapper img {
+.cityCard1:hover {
+    border: 2px solid #f84d50;
+}
+
+.cityCard2 {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    width: 300px;
+    height: 250px;
+    cursor: pointer;
+
+    transition: transform 0.5s;
+}
+
+.cityCard2:hover {
+    border: 2px solid #f84d50;
+}
+
+.cityCard3 {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    width: 300px;
+    height: 250px;
+    cursor: pointer;
+    
+    transition: transform 0.5s;
+}
+
+.cityCard3:hover {
+    border: 2px solid #f84d50;
+}
+
+.cityCard4 {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    width: 300px;
+    height: 540px;
+    cursor: pointer;
+    
+    transition: transform 0.5s;
+}
+
+.cityCard4:hover {
+    border: 2px solid #f84d50;
+}
+
+.cityCard5 {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    width: 400px;
+    height: 250px;
+    bottom: 17.5em;
+    cursor: pointer;
+    
+    transition: transform 0.5s;
+}
+
+.cityCard5:hover {
+    border: 2px solid #f84d50;
+}
+
+.cityCard6 {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    width: 530px;
+    height: 250px;
+    bottom: 17.5em;
+    cursor: pointer;
+    
+    transition: transform 0.5s;
+}
+
+.cityCard6:hover {
+    border: 3px solid #f84d50;
+}
+
+.cityImage {
     width: 100%;
-    height: auto;
-    filter: brightness(0.7);
+    height: 100%;
+    object-fit: cover;
 }
 
-.textOverlay {
+.cityInfo {
     position: absolute;
     bottom: 0;
     left: 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
     width: 100%;
-    text-align: left;
-    color: white;
-    padding: 10px;
+    box-sizing: border-box;
 }
 
-.textOverlay p {
+.cityInfo p {
     margin: 0;
     font-size: 14px;
 }
 
-.textOverlay h3 {
-    margin: 0;
-    font-family: 'Kaushan Script', cursive;
+.cityInfo h2 {
+    margin: 5px 0 0 0;
+    font-size: 20px;
     font-weight: normal;
+    font-family: 'Kaushan Script', cursive;
 }
