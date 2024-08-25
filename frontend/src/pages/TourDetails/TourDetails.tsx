@@ -1,7 +1,7 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import styles from './TourDetails.module.css'
-import PopularToursComponent from "../../components/PopularToursComponent/PopularToursComponent"
+import PopularToursComponent, { PopularToursComponentProps } from "../../components/PopularToursComponent/PopularToursComponent"
 import TourDetailComponent from "../../components/TourDetailComponent/TourDetailComponent"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,8 +9,32 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
+import { useEffect, useState } from "react"
+import api from "../../services/api"
 
 const TourDetails = () => {
+  const [tours, setTours] = useState<PopularToursComponentProps[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const getAllTours = async () => {
+    try {
+      const response = await api.get('/popularTours');
+      setTours(response.data);  
+    } catch (err) {
+      setError('Error searching for tours');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getAllTours();
+  }, []);
+
+  if (loading) return <p>Waiting...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <>
       <Header />
@@ -30,12 +54,21 @@ const TourDetails = () => {
                 modules={[Pagination]}
                 className={styles.swiperContainer}
               >
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
+              {tours.map((tour) => (
+                <SwiperSlide key={Number(tour.id)}>
+                  <PopularToursComponent
+                    id={tour.id}
+                    url_image={tour.url_image}
+                    city={tour.city}
+                    country={tour.country}
+                    title={tour.title}
+                    stars={tour.stars}
+                    reviews={tour.reviews}
+                    days={tour.days}
+                    price={tour.price}
+                  />
+                </SwiperSlide>
+              ))}
 
               </Swiper>
               <div className="swiper-pagination"></div>
