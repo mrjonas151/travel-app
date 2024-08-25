@@ -1,19 +1,27 @@
 import styles from './TravelGuideComponent.module.css'
-import tourist_photographer3 from '../../assets/tourist_photographer3.jpg'
 
-const TravelGuideComponent = () => {
+export interface TravelGuideComponentProps {
+    id: string;
+    url_image: string;
+    month: string;
+    day: string;
+    year: string;
+    title: string;  
+}
+
+const TravelGuideComponent = ({url_image, month, day, year, title}:TravelGuideComponentProps) => {
   return (
     <div className={styles.container}>
         <div className={styles.imageWrapper}>
-            <img src={tourist_photographer3} alt="Tourist Photographer" />
+            <img src={url_image} alt="Guide photo" />
         </div>
         <div className={styles.textContainer}>
             <div className={styles.date}>
-                <p>July, 13, 2023</p>
+                <p>{month}, {day}, {year}</p>
                 <ul><li>Admin</li></ul>
             </div>
             <div className={styles.titleContainer}>
-                <h2>The Impact of Covid-19 on travel & tourism industry</h2>
+                <h2>{title}</h2>
             </div>
         </div>
     </div>

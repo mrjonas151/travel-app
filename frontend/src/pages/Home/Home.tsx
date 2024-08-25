@@ -19,8 +19,48 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { Pagination } from 'swiper/modules';
+import { useEffect, useState } from "react"
+
+import { TravelGuideComponentProps } from "../../components/TravelGuideComponent/TravelGuideComponent"
+import { PopularToursComponentProps } from "../../components/PopularToursComponent/PopularToursComponent"
+import api from "../../services/api"
 
 const Home = () => {
+  const [tours, setTours] = useState<PopularToursComponentProps[]>([]);
+  const [travelGuides, setTravelGuides] = useState<TravelGuideComponentProps[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const getAllTours = async () => {
+    try {
+      const response = await api.get('/popularTours');
+      setTours(response.data);  
+    } catch (err) {
+      setError('Error searching for tours');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+    const getTravelGuides = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/travelGuides');
+      setTravelGuides(response.data.slice(0, 4));
+    } catch (err) {
+      setError('Error fetching travel guides');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getAllTours();
+    getTravelGuides();
+  }, []);
+
+  if (loading) return <p>Waiting...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <>
@@ -51,12 +91,21 @@ const Home = () => {
               modules={[Pagination]}
               className={styles.swiperContainer}
             >
-            <SwiperSlide><PopularToursComponent /></SwiperSlide>
-            <SwiperSlide><PopularToursComponent /></SwiperSlide>
-            <SwiperSlide><PopularToursComponent /></SwiperSlide>
-            <SwiperSlide><PopularToursComponent /></SwiperSlide>
-            <SwiperSlide><PopularToursComponent /></SwiperSlide>
-            <SwiperSlide><PopularToursComponent /></SwiperSlide>
+            {tours.map((tour) => (
+              <SwiperSlide key={Number(tour.id)}>
+                <PopularToursComponent
+                  id={tour.id}
+                  url_image={tour.url_image}
+                  city={tour.city}
+                  country={tour.country}
+                  title={tour.title}
+                  stars={tour.stars}
+                  reviews={tour.reviews}
+                  days={tour.days}
+                  price={tour.price}
+                />
+              </SwiperSlide>
+            ))}
 
             </Swiper>
             <div className="swiper-pagination"></div>
@@ -132,10 +181,17 @@ const Home = () => {
             <h1>Latest Travel Guide</h1>
           </div>
           <div className={styles.travelGuideContainer}>
-            <TravelGuideComponent />
-            <TravelGuideComponent />
-            <TravelGuideComponent />
-            <TravelGuideComponent />
+            {travelGuides.map(guide => (
+                <TravelGuideComponent
+                  key={guide.id}
+                  id={guide.id}
+                  url_image={guide.url_image}
+                  day={guide.day}
+                  month={guide.month}
+                  year={guide.year}
+                  title={guide.title}
+                />
+            ))}
           </div>
           <div className={styles.iconsComponent}>
             <IconsComponent />

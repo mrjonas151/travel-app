@@ -34,3 +34,39 @@ model User {
 
   @@map("Users")
 }
+
+model PopularTours {
+  id              String   @id @default(uuid())  
+  url_image       String
+  city            String
+  country         String
+  title           String
+  stars           Float
+  reviews         Int
+  days            Int
+  price           Float
+  date_of_include DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  @@map("PopularTours")
+}
+
+model TravelGuide{
+  id          String   @id @default(uuid())
+  url_image   String
+  month       String
+  day         String
+  year        String
+  title       String
+
+  @@map("TravelGuide")
+}
+
+model Category{
+  id              String @id @default(uuid())
+  title           String
+  tour_quantity   Int
+  price           Float 
+
+  @@map("Category")
+}

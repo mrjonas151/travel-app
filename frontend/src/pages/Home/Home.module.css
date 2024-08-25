@@ -159,12 +159,13 @@
 }
 
 .travelGuideContainer{
-    padding-left: 8%;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 2vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding-bottom: 10vh;
     flex-wrap: wrap;
     gap: 40px;
