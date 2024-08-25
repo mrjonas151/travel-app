@@ -3,11 +3,18 @@
     display: flex;
     justify-content: center;
     left: 20%;
-    margin-top: 20px;
     z-index: 1;
-    margin-top: -55px;
+    margin-top: -45px;
 }
 
 .content {
-    padding: 10vh 10%;
+    padding: 0 15%;
+    position: relative;
+    top: 100px;
+    height: 140vh;
+}
+
+.secondContent{
+    position: relative;
+    bottom: 30vh;
 }
