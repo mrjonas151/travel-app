@@ -3,12 +3,13 @@ import Booking_image from '../../assets/Booking_image.jpg'
 import Share_tourDetail from '../../assets/Share_tourDetail.png'
 import Heart_tourDetail from '../../assets/Heart_tourDetail.png'
 import Location_tourDetail from '../../assets/Location_tourDetail.png'
-import { FaVideo, FaImage, FaStar } from 'react-icons/fa'
+import { FaVideo, FaImage } from 'react-icons/fa'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 import BookingForm from '../BookingForm/BookingForm'
 import ReviewForm from '../ReviewForm/ReviewForm'
 import person from '../../assets/person.jpg'
 import white_star from '../../assets/white_star.png'
+import RatingCard from '../RatingCard/RatingCard'
 
 const TourDetailComponent = () => {
 
@@ -103,10 +104,14 @@ const TourDetailComponent = () => {
         <div className={styles.reviewsContainer}>
             <h2>Average Reviews</h2>
             <div className={styles.mainRate}>
-              <div className={styles.rate}>
-                <h1>4.8</h1>
-                <span><FaStar className={styles.iconStar}/>Excelent</span>
-              </div>
+              <RatingCard rating={4.8} categories={[
+                { name: 'Services', score: 3.2 },
+                { name: 'Prices', score: 4.7 },
+                { name: 'Locations', score: 2.1 },
+                { name: 'Food', score: 4.8 },
+                { name: 'Amenities', score: 4.6 },
+                { name: 'Room comfort and quality', score: 4.7 }
+              ]} />
             </div>
             <div>
               <div className={styles.showingNumber}>
