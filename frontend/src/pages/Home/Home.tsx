@@ -21,6 +21,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { useEffect, useState } from "react"
 
+import { TourTypeComponentProps } from "../../components/TourTypeComponent/TourTypeComponent"
 import { TravelGuideComponentProps } from "../../components/TravelGuideComponent/TravelGuideComponent"
 import { PopularToursComponentProps } from "../../components/PopularToursComponent/PopularToursComponent"
 import api from "../../services/api"
@@ -31,6 +32,18 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [testimonials, setTestimonials] = useState<TestimonialComponentProps[]>([]);
+  const [categories, setCategories] = useState<TourTypeComponentProps[]>([]);
+
+  const getAllCategories = async () => {
+    try {
+      const response = await api.get('/categories');
+      setCategories(response.data);
+    } catch (err) {
+      setError('Error searching categories');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const getAllTours = async () => {
     try {
@@ -70,6 +83,7 @@ const Home = () => {
     getAllTours();
     getTravelGuides();
     getAllTestimonials();
+    getAllCategories();
   }, []);
 
   if (loading) return <p>Waiting...</p>;
@@ -168,14 +182,16 @@ const Home = () => {
               modules={[Pagination]}
               className={styles.swiperContainer}
             >
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
-              <SwiperSlide><TourTypeComponent /></SwiperSlide>
+              {categories.map((category) => (
+                <SwiperSlide key={category.id}>
+                  <TourTypeComponent
+                    id={category.id}
+                    title={category.title}
+                    tour_quantity={category.tour_quantity}
+                    price={category.price}
+                  />
+                </SwiperSlide>
+              ))}
             </Swiper>
             </div>
           <div className="swiper-pagination"></div>

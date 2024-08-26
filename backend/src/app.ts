@@ -4,6 +4,7 @@ import popularTourRoutes from "./routes/popularTourRoutes";
 import cors from "cors";
 import travelGuideRoutes from "./routes/travelGuideRoutes";
 import testimonialsRouter from "./routes/testimonialRoutes";
+import categoryRouter from "./routes/categoryRoutes";
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.use("/users", userRoutes);
 app.use("/popularTours", popularTourRoutes);
 app.use("/travelGuides", travelGuideRoutes);
 app.use("/testimonials", testimonialsRouter);
+app.use("/categories", categoryRouter);
 
 export default app;

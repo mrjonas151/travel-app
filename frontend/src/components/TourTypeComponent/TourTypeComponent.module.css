@@ -2,8 +2,13 @@
     align-content: center;
     align-items: center;
     height: 25vh;
-    width: 90%;
+    width: 100%;
     border: 2px solid #d3d3d3;
+    cursor: pointer;
+}
+
+.mainContainer:hover{
+    border: 2px solid #f84d50;
 }
 
 .content{
@@ -16,6 +21,11 @@
 
 .content h2{
     color: #081134;
+    transition: 0.5s all;
+}
+
+.content h2:hover{
+    color: #f84d50;
 }
 
 .icon{
