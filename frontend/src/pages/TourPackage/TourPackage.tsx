@@ -44,7 +44,22 @@ const TourPackage = () => {
       </div>
       <div className={styles.mainPage}>
         <div className={styles.content}>
-          <SearchFilterComponent />
+          <div className={styles.rowContent}>
+            <SearchFilterComponent />
+            <div className={styles.rowFilters}>
+              <p>{tours.length} Tours</p>
+              <div>
+                <span>Sort by</span>
+                <select>
+                  <option>Popularity</option>
+                  <option>Price</option>
+                  <option>Rating</option>
+                </select>
+              </div>
+            </div>
+            
+          </div>
+          
           <FilterByComponent />
           <CategoriesComponent />
           <DestinationsFilterComponent />

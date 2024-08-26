@@ -43,3 +43,35 @@
     margin-top: 10vh;
     margin-bottom: 10vh;
 }
+
+.rowContent{
+    display: flex;
+    flex-direction: row;
+}
+
+.rowFilters{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    color: #081134;
+    position: relative;
+    left: 65px;
+    justify-content: space-between;
+}
+
+.rowFilters select{
+    position: relative;
+    width: 200px;
+    height: 35px;
+    border-radius: 7px;
+}
+
+.rowFilters p{
+    position: relative;
+    top: 7px;
+}
+
+.rowFilters span{
+    position: relative;
+    right: 15px;
+}
