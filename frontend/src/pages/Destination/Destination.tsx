@@ -15,7 +15,7 @@ const Destination = () => {
       </div>
       <div className={styles.content}>
         <TopAttractionsComponent />
-        <div className={styles.secondContent}>
+        <div className={`${styles.secondContent} ${styles.reversedContent}`}>
           <TopAttractionsComponent />
         </div>
       </div>
