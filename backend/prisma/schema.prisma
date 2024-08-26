@@ -7,48 +7,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Trip {
-  id              String   @id @default(uuid())  
-  destination     String   
-  start_date      DateTime 
-  travel_time     String   
-  total_value     Float    
-  tour_type       String  
-  reviews         Int      
-  user            User     @relation(fields: [userId], references: [id])
-  userId          String 
-  date_of_include DateTime?      @default(now())
-  updated_at      DateTime?      @default(now())
-
-  @@map("Trips")
-}
-
 model User {
   id              String         @id
   email           String         @unique
   name            String?
   last_name       String?
-  trips           Trip[]
+  userRatings     UserRating[]
   date_of_include DateTime?      @default(now())
   updated_at      DateTime?      @updatedAt
 
   @@map("Users")
-}
-
-model PopularTours {
-  id              String   @id @default(uuid())  
-  url_image       String
-  city            String
-  country         String
-  title           String
-  stars           Float
-  reviews         Int
-  days            Int
-  price           Float
-  date_of_include DateTime @default(now())
-  updated_at      DateTime @updatedAt
-
-  @@map("PopularTours")
 }
 
 model TravelGuide{
@@ -67,6 +35,7 @@ model Category{
   title           String
   tour_quantity   Int
   price           Float 
+  tours           Tour[]
 
   @@map("Category")
 }
@@ -81,4 +50,57 @@ model Testimonials{
   profession      String
 
   @@map("Testimonials")
+}
+
+model Tour {
+  id                      String          @id @default(uuid())
+  url_image               String 
+  title                   String
+  city                    String 
+  initial_date            DateTime 
+  final_date              DateTime
+  initial_price           Float
+  max_people              Int
+  min_age                 Int
+  overview_city           String 
+  overview_curiosities    String
+  latitude                Float  
+  longitude               Float 
+  averageRating           Float
+  userRatings             UserRating[]
+  category                Category        @relation(fields: [categoryId], references: [id])
+  categoryId              String
+  country                 Country         @relation(fields: [countryId], references: [id])
+  countryId               String
+}
+
+model Country {
+  id                    String   @id @default(uuid())
+  name                  String   @unique
+  travelers_quantity    Int
+  url_image             String
+  latitude              Float
+  longitude             Float
+  min_weather           Int 
+  max_weather           Int
+  tours                 Tour[]
+
+  @@map("Countries")
+}
+
+model UserRating {
+  id          String   @id @default(uuid())
+  idTour      String
+  idUser      String
+  user_name   String
+  user_email  String
+  services    Int
+  locations   Int
+  amentities  Int
+  prices      Int
+  comfort     Int
+  tour        Tour     @relation(fields: [idTour], references: [id])
+  user        User     @relation(fields: [idUser], references: [id])
+  
+  @@map("UserRatings")
 }

@@ -11,6 +11,53 @@ import person from '../../assets/person.jpg'
 import white_star from '../../assets/white_star.png'
 import RatingCard from '../RatingCard/RatingCard'
 
+export interface TourDetailComponentProps {
+  id: string;
+  url_image: string;
+  title: string;
+  city: string;
+  initial_date: string;
+  final_date: string;
+  initial_price: number;
+  max_people: number;
+  min_age: number;
+  tour_type: string;
+  overview_city: string;
+  overview_curiosities: string;
+  latitude: number;
+  longitude: number;
+  averageRating: number;
+  userRates: {
+    id: string;
+    idTour: string;
+    idUser: string;
+    user_name: string;
+    user_email: string;
+    services: number;
+    locations: number;
+    amentities: number;
+    prices: number;
+    comfort: number;
+  }[];
+  category: {
+    id: string;
+    title: string;
+    tour_quantity: number;
+    price: number;
+  };
+    country: {
+    id: string;
+    name: string;
+    travelers_quantity: number;
+    url_image: string;
+    latitude: number;
+    longitude: number;
+    min_weather: number;
+    max_weather: number;
+  };
+}
+
+
 const TourDetailComponent = () => {
 
   const {isLoaded} = useJsApiLoader({

@@ -1,6 +1,6 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes";
-import popularTourRoutes from "./routes/popularTourRoutes";
+import tourDetailRoutes from "./routes/tourDetailsRoutes";
 import cors from "cors";
 import travelGuideRoutes from "./routes/travelGuideRoutes";
 import testimonialsRouter from "./routes/testimonialRoutes";
@@ -15,7 +15,7 @@ app.use(cors({
 }));
 
 app.use("/users", userRoutes);
-app.use("/popularTours", popularTourRoutes);
+app.use("/tourDetails", tourDetailRoutes);
 app.use("/travelGuides", travelGuideRoutes);
 app.use("/testimonials", testimonialsRouter);
 app.use("/categories", categoryRouter);

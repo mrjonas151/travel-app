@@ -8,6 +8,12 @@ class CategoryService {
         title: true,
         tour_quantity: true,
         price: true,
+        tours:{
+          select:{
+            id: true,
+            title: true,
+          }
+        }
       },
     });
     return categories;
