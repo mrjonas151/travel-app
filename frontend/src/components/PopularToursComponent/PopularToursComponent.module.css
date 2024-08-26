@@ -4,6 +4,8 @@
     text-align: start;
     width: 69%;
     cursor: pointer;
+    text-decoration: none;
+    color: #081134;
 }
 
 .mainContainer img {

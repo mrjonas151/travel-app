@@ -1,25 +1,19 @@
 import styles from './PopularToursComponent.module.css'
 import white_star from '../../assets/white_star.png'
 import clock from '../../assets/clock.png'
+import { TourDetailComponentProps } from '../TourDetailComponent/TourDetailComponent'
 
-export interface PopularToursComponentProps {
-    id: string;
-    url_image: string;
-    city: string;
-    country: string;
-    title: string;
-    stars: number;
-    reviews: number;
-    days: number;
-    price: number;
-}
+const PopularToursComponent = ({ id, url_image, city, country, title, averageRating, userRatings, initial_date, final_date, initial_price }:TourDetailComponentProps) => {
+    
+    const handleClick = () => {
+        window.location.href = `/tour-details/${id}`;
+    };
 
-const PopularToursComponent = ({ url_image, city, country, title, stars, reviews, days, price }:PopularToursComponentProps) => {
-  return (
-    <div className={styles.mainContainer}>
+    return (
+    <div className={styles.mainContainer} onClick={handleClick}>
         <img src={url_image} alt='Place image' />
         <div className={styles.textsContainer}>
-            <p className={styles.country}>{city}, {country}</p>
+            <p className={styles.country}>{city}, {country.name}</p>
             
             <div className={styles.titleContainer}>
                 <h2>{title}</h2>
@@ -28,19 +22,19 @@ const PopularToursComponent = ({ url_image, city, country, title, stars, reviews
                 <div className={styles.firstReview}>
                     <div className={styles.stars}>
                         <img src={white_star} />
-                        <p>{stars}</p>
+                        <p>{averageRating}</p>
                     </div>
-                    <p className={styles.reviewP}>{reviews} reviews</p>
+                    <p className={styles.reviewP}>{userRatings.length} reviews</p>
                 </div>
                 <div className={styles.days}>
                     <img src={clock} alt='clock logo'/>
-                    <p className={styles.reviewQ}>{days} days</p>
+                    <p className={styles.reviewQ}>8 days</p>
                 </div>
             </div>
             <div className={styles.horizontalLine}></div>
             <div className={styles.price}>
                 <p>Starting from</p>
-                <strong>${price}</strong>
+                <strong>${initial_price}</strong>
             </div>
         </div>
     </div>

@@ -23,11 +23,11 @@ import { useEffect, useState } from "react"
 
 import { TourTypeComponentProps } from "../../components/TourTypeComponent/TourTypeComponent"
 import { TravelGuideComponentProps } from "../../components/TravelGuideComponent/TravelGuideComponent"
-import { PopularToursComponentProps } from "../../components/PopularToursComponent/PopularToursComponent"
+import { TourDetailComponentProps } from "../../components/TourDetailComponent/TourDetailComponent"
 import api from "../../services/api"
 
 const Home = () => {
-  const [tours, setTours] = useState<PopularToursComponentProps[]>([]);
+  const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
   const [travelGuides, setTravelGuides] = useState<TravelGuideComponentProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -47,7 +47,7 @@ const Home = () => {
 
   const getAllTours = async () => {
     try {
-      const response = await api.get('/popularTours');
+      const response = await api.get('/tourDetails');
       setTours(response.data);  
     } catch (err) {
       setError('Error searching for tours');
@@ -89,6 +89,7 @@ const Home = () => {
   if (loading) return <p>Waiting...</p>;
   if (error) return <p>{error}</p>;
 
+
   return (
     <>
         <Header />
@@ -126,10 +127,24 @@ const Home = () => {
                   city={tour.city}
                   country={tour.country}
                   title={tour.title}
-                  stars={tour.stars}
-                  reviews={tour.reviews}
-                  days={tour.days}
-                  price={tour.price}
+                  averageRating={tour.averageRating}
+                  userRatings={tour.userRatings}
+                  initial_date={tour.initial_date}
+                  final_date={tour.final_date}
+                  initial_price={tour.initial_price} 
+                  max_people={tour.max_people} 
+                  min_age={tour.min_age} 
+                  tour_type={tour.tour_type} 
+                  overview_city={tour.overview_city} 
+                  overview_curiosities={tour.overview_curiosities} 
+                  latitude={tour.latitude} 
+                  longitude={tour.longitude} 
+                  category={{
+                    id: tour.category.id,
+                    title: tour.category.title,
+                    tour_quantity: tour.category.tour_quantity,
+                    price: tour.category.price
+                  }}                
                 />
               </SwiperSlide>
             ))}
