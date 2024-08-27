@@ -75,6 +75,31 @@ class TourDetailsService {
     return countries;
   }
 
+  static async getPopularCountryByIdService(id: string) {
+    const country = await prisma.country.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        travelers_quantity: true,
+        url_image: true,
+        latitude: true,
+        longitude: true,
+        min_weather: true,
+        max_weather: true,
+        overview_country: true,
+        overview_country_curiosities: true,
+        language: true,
+        currency: true,
+        area: true,
+        population: true,
+        time_zone: true,
+        time_to_travel: true,
+      },
+    });
+    return country;
+  }
+
   static async getTourDetailsService(id: string) {
     const tour = await prisma.tour.findUnique({
       where: { id },

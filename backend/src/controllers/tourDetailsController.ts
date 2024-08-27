@@ -30,6 +30,18 @@ class PopularToursController {
     }
   }
 
+  static async getPopularCountryByIdController(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      const country = await TourDetailsService.getPopularCountryByIdService(id);
+      if (!country) {
+        return res.status(404).json({ message: "Country not found" });
+      }
+      return res.json(country);
+    } catch (error) {
+      return res.status(500).json({ message: "Server error" });
+    }
+  }
 }
 
 export { PopularToursController };
