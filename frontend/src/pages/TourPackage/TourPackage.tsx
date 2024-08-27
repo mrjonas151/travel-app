@@ -5,21 +5,22 @@ import DestinationsFilterComponent from "../../components/DestinationsFilterComp
 import FilterByComponent from "../../components/FilterByComponent/FilterByComponent"
 import Footer from "../../components/Footer/Footer"
 import Header from "../../components/Header/Header"
-import PopularToursComponent, { PopularToursComponentProps } from "../../components/PopularToursComponent/PopularToursComponent"
+import PopularToursComponent from "../../components/PopularToursComponent/PopularToursComponent"
 import ReviewFilterComponent from "../../components/ReviewFilterComponent/ReviewFilterComponent"
 import SearchFilterComponent from "../../components/SearchFilterComponent/SearchFilterComponent"
 import SearchTravel from "../../components/SearchTravel/SearchTravel"
 import styles from './TourPackage.module.css'
 import api from "../../services/api"
+import { TourDetailComponentProps } from "../../components/TourDetailComponent/TourDetailComponent"
 
 const TourPackage = () => {
-  const [tours, setTours] = useState<PopularToursComponentProps[]>([]);
+  const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const getAllTours = async () => {
     try {
-      const response = await api.get('/popularTours');
+      const response = await api.get('/tourDetails');
       setTours(response.data);  
     } catch (err) {
       setError('Error searching for tours');
@@ -74,10 +75,24 @@ const TourPackage = () => {
                   city={tour.city}
                   country={tour.country}
                   title={tour.title}
-                  stars={tour.stars}
-                  reviews={tour.reviews}
-                  days={tour.days}
-                  price={tour.price}
+                  averageRating={tour.averageRating}
+                  userRatings={tour.userRatings}
+                  initial_date={tour.initial_date}
+                  final_date={tour.final_date}
+                  initial_price={tour.initial_price} 
+                  max_people={tour.max_people} 
+                  min_age={tour.min_age} 
+                  tour_type={tour.tour_type} 
+                  overview_city={tour.overview_city} 
+                  overview_curiosities={tour.overview_curiosities} 
+                  latitude={tour.latitude} 
+                  longitude={tour.longitude} 
+                  category={{
+                    id: tour.category.id,
+                    title: tour.category.title,
+                    tour_quantity: tour.category.tour_quantity,
+                    price: tour.category.price
+                  }}                
                 />
               </div>
             ))}

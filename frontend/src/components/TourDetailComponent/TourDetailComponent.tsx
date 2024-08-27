@@ -9,6 +9,7 @@ import ReviewForm from '../ReviewForm/ReviewForm'
 import person from '../../assets/person.jpg'
 import white_star from '../../assets/white_star.png'
 import RatingCard from '../RatingCard/RatingCard'
+import { toast } from 'react-toastify'
 
 export interface TourDetailComponentProps {
   id: string;
@@ -70,6 +71,16 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
     });
   };
 
+  const copyToClipboard = async () => {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url); 
+      toast.success('URL copied successfully!'); 
+    } catch (error) {
+      toast.error('Failed to copy URL!'); 
+    }
+  };
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.rowBook}>
@@ -92,7 +103,7 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
           <p onClick={scrollToMap} style={{ cursor: 'pointer' }}>View on map</p>
         </div>
         <div className={styles.share}>
-          <img src={Share_tourDetail} className={styles.icon} alt="Share" />
+          <img src={Share_tourDetail} className={styles.icon} alt="Share" onClick={copyToClipboard} />
           <img src={Heart_tourDetail} className={styles.icon} alt="Heart" />
         </div>
       </div>

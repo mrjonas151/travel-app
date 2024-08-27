@@ -1,58 +1,93 @@
 import styles from "./TopAttractionsComponent.module.css";
-import airBalloon from "../../assets/air_balloon.png";
+import api from "../../services/api";
+import { useEffect, useState } from "react";
+
+interface TopAttractionsComponentProps {
+  id: string;
+  name: string;
+  travelers_quantity: number;
+  url_image: string;
+  latitude: number;
+  longitude: number;
+  min_weather: number;
+  max_weather: number;
+}
 
 const TopAttractionsComponent = () => {
+  const [topAttractions, setTopAttractions] = useState<TopAttractionsComponentProps[]>([]);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  const getTopAttractions = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get("/tourDetails/popular");
+      setTopAttractions(response.data.slice(0, 6));
+    } catch (err) {
+      setError("Error searching for top attractions");
+    }finally{
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getTopAttractions();
+  }, []);
+
+  if (loading) return <p>Waiting...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <div className={styles.cityGrid}>
       <div className={styles.cityCard1}>
         <img
           className={styles.cityImage}
-          src={airBalloon}
-          alt="United Kingdom"
+          src={topAttractions[0].url_image}
+          alt="Country image"
         />
         <div className={styles.cityInfo}>
-          <p>174,688 Travelers</p>
-          <h2>United Kingdom</h2>
+          <p>{topAttractions[0].travelers_quantity} Travelers</p>
+          <h2>{topAttractions[0].name}</h2>
         </div>
       </div>
 
       <div className={styles.cityCard2}>
-        <img className={styles.cityImage} src={airBalloon} alt="Turkey" />
+        <img className={styles.cityImage} src={topAttractions[1].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
-          <p>174,688 Travelers</p>
-          <h2>Turkey</h2>
+          <p>{topAttractions[1].travelers_quantity} Travelers</p>
+          <h2>{topAttractions[1].name}</h2>
         </div>
       </div>
 
       <div className={styles.cityCard3}>
-        <img className={styles.cityImage} src={airBalloon} alt="Switzerland" />
+        <img className={styles.cityImage} src={topAttractions[2].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
-          <p>174,688 Travelers</p>
-          <h2>Switzerland</h2>
+          <p>{topAttractions[2].travelers_quantity} Travelers</p>
+          <h2>{topAttractions[2].name}</h2>
         </div>
       </div>
 
       <div className={styles.cityCard4}>
-        <img className={styles.cityImage} src={airBalloon} alt="Thailand" />
+        <img className={styles.cityImage} src={topAttractions[3].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
-          <p>174,688 Travelers</p>
-          <h2>Thailand</h2>
+          <p>{topAttractions[3].travelers_quantity} Travelers</p>
+          <h2>{topAttractions[3].name}</h2>
         </div>
       </div>
 
       <div className={styles.cityCard5}>
-        <img className={styles.cityImage} src={airBalloon} alt="Australia" />
+        <img className={styles.cityImage} src={topAttractions[4].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
-          <p>174,688 Travelers</p>
-          <h2>Australia</h2>
+          <p>{topAttractions[4].travelers_quantity} Travelers</p>
+          <h2>{topAttractions[4].name}</h2>
         </div>
       </div>
 
       <div className={styles.cityCard6}>
-        <img className={styles.cityImage} src={airBalloon} alt="France" />
+        <img className={styles.cityImage} src={topAttractions[5].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
-          <p>174,688 Travelers</p>
-          <h2>France</h2>
+          <p>{topAttractions[5].travelers_quantity} Travelers</p>
+          <h2>{topAttractions[5].name}</h2>
         </div>
       </div>
     </div>

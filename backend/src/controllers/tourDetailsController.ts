@@ -8,6 +8,15 @@ class PopularToursController {
     return res.json(popularTours);
   }
 
+  static async getPopularToursByTravelersQuantityController(req: Request, res: Response) {
+    try {
+      const popularTours = await TourDetailsService.getPopularCountriesByTravelersQuantityService();
+      return res.json(popularTours);
+    } catch (error) {
+      return res.status(500).json({ message: "Server error" });
+    }
+  }
+
   static async getTourDetailsController(req: Request, res: Response) {
     const { id } = req.params;
     try {

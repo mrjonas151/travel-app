@@ -5,13 +5,38 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import PopularToursComponent from '../PopularToursComponent/PopularToursComponent';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import { useEffect, useState } from 'react';
+import { TourDetailComponentProps } from '../TourDetailComponent/TourDetailComponent';
+import api from '../../services/api';
 
 const DestinationDetailComponent = () => {
+  const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const getAllTours = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/tourDetails');
+      setTours(response.data);  
+    } catch (err) {
+      setError('Error searching for tours');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY || '',
   })
+
+  useEffect(() => {
+    getAllTours();
+  }, []);
+
+  if (loading) return <p>Waiting...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className={styles.mainContainer}>
@@ -128,7 +153,7 @@ const DestinationDetailComponent = () => {
         <h1>Popular Tours in UK</h1>
         <button>See All<FaArrowRight className={styles.icon}/></button>
       </div>
-      <div className={styles.swiperWrapper}>
+        <div className={styles.swiperWrapper}>
             <div className={styles.popularToursCarousel}>
               <Swiper
                 spaceBetween={30}
@@ -137,12 +162,35 @@ const DestinationDetailComponent = () => {
                 modules={[Pagination]}
                 className={styles.swiperContainer}
               >
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
-              <SwiperSlide><PopularToursComponent /></SwiperSlide>
+              {tours.map((tour) => (
+                <SwiperSlide key={Number(tour.id)}>
+                  <PopularToursComponent
+                    id={tour.id}
+                    url_image={tour.url_image}
+                    city={tour.city}
+                    country={tour.country}
+                    title={tour.title}
+                    averageRating={tour.averageRating}
+                    userRatings={tour.userRatings}
+                    initial_date={tour.initial_date}
+                    final_date={tour.final_date}
+                    initial_price={tour.initial_price} 
+                    max_people={tour.max_people} 
+                    min_age={tour.min_age} 
+                    tour_type={tour.tour_type} 
+                    overview_city={tour.overview_city} 
+                    overview_curiosities={tour.overview_curiosities} 
+                    latitude={tour.latitude} 
+                    longitude={tour.longitude} 
+                    category={{
+                      id: tour.category.id,
+                      title: tour.category.title,
+                      tour_quantity: tour.category.tour_quantity,
+                      price: tour.category.price
+                    }}                
+                  />
+                </SwiperSlide>
+              ))}
 
               </Swiper>
               <div className="swiper-pagination"></div>

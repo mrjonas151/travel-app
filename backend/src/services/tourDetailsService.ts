@@ -55,6 +55,26 @@ class TourDetailsService {
     return popularTours;
   }
 
+  static async getPopularCountriesByTravelersQuantityService() {
+    const countries = await prisma.country.findMany({
+      select: {
+        id: true,
+        name: true,
+        travelers_quantity: true,
+        url_image: true,
+        latitude: true,
+        longitude: true,
+        min_weather: true,
+        max_weather: true,
+      },
+      orderBy: {
+        travelers_quantity: 'desc',
+      },
+    });
+
+    return countries;
+  }
+
   static async getTourDetailsService(id: string) {
     const tour = await prisma.tour.findUnique({
       where: { id },
