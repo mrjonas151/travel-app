@@ -37,6 +37,10 @@ const TopAttractionsComponent = ({quantity}:quantityProps) => {
     }
   };
 
+  const redirectCountry = (id: string) => {
+    window.location.href = `/destination-details/${id}`;
+  }
+
   useEffect(() => {
     getTopAttractions();
   }, []);
@@ -46,7 +50,7 @@ const TopAttractionsComponent = ({quantity}:quantityProps) => {
 
   return (
     <div className={styles.cityGrid}>
-      <div className={styles.cityCard1}>
+      <div className={styles.cityCard1} onClick={() => redirectCountry(topAttractions[0].id)}>
         <img
           className={styles.cityImage}
           src={topAttractions[0].url_image}
@@ -58,7 +62,7 @@ const TopAttractionsComponent = ({quantity}:quantityProps) => {
         </div>
       </div>
 
-      <div className={styles.cityCard2}>
+      <div className={styles.cityCard2} onClick={() => redirectCountry(topAttractions[1].id)}>
         <img className={styles.cityImage} src={topAttractions[1].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
           <p>{topAttractions[1].travelers_quantity} Travelers</p>
@@ -66,7 +70,7 @@ const TopAttractionsComponent = ({quantity}:quantityProps) => {
         </div>
       </div>
 
-      <div className={styles.cityCard3}>
+      <div className={styles.cityCard3} onClick={() => redirectCountry(topAttractions[2].id)}>
         <img className={styles.cityImage} src={topAttractions[2].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
           <p>{topAttractions[2].travelers_quantity} Travelers</p>
@@ -74,7 +78,7 @@ const TopAttractionsComponent = ({quantity}:quantityProps) => {
         </div>
       </div>
 
-      <div className={styles.cityCard4}>
+      <div className={styles.cityCard4} onClick={() => redirectCountry(topAttractions[3].id)}>
         <img className={styles.cityImage} src={topAttractions[3].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
           <p>{topAttractions[3].travelers_quantity} Travelers</p>
@@ -82,7 +86,7 @@ const TopAttractionsComponent = ({quantity}:quantityProps) => {
         </div>
       </div>
 
-      <div className={styles.cityCard5}>
+      <div className={styles.cityCard5} onClick={() => redirectCountry(topAttractions[4].id)}>
         <img className={styles.cityImage} src={topAttractions[4].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
           <p>{topAttractions[4].travelers_quantity} Travelers</p>
@@ -90,7 +94,7 @@ const TopAttractionsComponent = ({quantity}:quantityProps) => {
         </div>
       </div>
 
-      <div className={styles.cityCard6}>
+      <div className={styles.cityCard6} onClick={() => redirectCountry(topAttractions[5].id)}>
         <img className={styles.cityImage} src={topAttractions[5].url_image} alt="Country image" />
         <div className={styles.cityInfo}>
           <p>{topAttractions[5].travelers_quantity} Travelers</p>

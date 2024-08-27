@@ -1,5 +1,4 @@
 import styles from './DestinationDetailComponent.module.css';
-import maldives from '../../assets/maldives.jpg';
 import { FaArrowRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
@@ -9,16 +8,52 @@ import { useEffect, useState } from 'react';
 import { TourDetailComponentProps } from '../TourDetailComponent/TourDetailComponent';
 import api from '../../services/api';
 
-const DestinationDetailComponent = () => {
+interface DestinationDetailComponentProps {
+  destinationId: string;
+}
+
+interface CountryDetailProps {
+  id: string;
+  name: string;
+  travelers_quantity: number;
+  url_image: string;
+  latitude: number;
+  longitude: number;
+  min_weather: number;  
+  max_weather: number;  
+  overview_country: string;
+  overview_country_curiosities: string;
+  language: string;
+  currency: string;
+  area: string;  
+  population: string;
+  time_zone: string;
+  time_to_travel: string;
+}
+
+const DestinationDetailComponent = ({destinationId}:DestinationDetailComponentProps) => {
   const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [country, setCountry] = useState<CountryDetailProps | null>(null);
 
   const getAllTours = async () => {
     try {
       setLoading(true);
       const response = await api.get('/tourDetails');
       setTours(response.data);  
+    } catch (err) {
+      setError('Error searching for tours');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getCountryDetails = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get(`/tourDetails/countries/${destinationId}`);
+      setCountry(response.data);  
     } catch (err) {
       setError('Error searching for tours');
     } finally {
@@ -33,21 +68,23 @@ const DestinationDetailComponent = () => {
 
   useEffect(() => {
     getAllTours();
-  }, []);
+    getCountryDetails();
+  }, [destinationId]);
 
   if (loading) return <p>Waiting...</p>;
   if (error) return <p>{error}</p>;
+  if(!country) return <p>Country not found</p>;
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.rowContent}>
         <div>
-          <img src={maldives} className={styles.bigImage}/>
+          <img src={country.url_image} className={styles.bigImage}/>
           <div className={styles.otherImages}> 
-            <img src={maldives} className={styles.smallImage}/>
-            <img src={maldives} className={styles.smallImage}/>
-            <img src={maldives} className={styles.smallImage}/>
-            <img src={maldives} className={styles.smallImage}/>
+            <img src={country.url_image} className={styles.smallImage}/>
+            <img src={country.url_image} className={styles.smallImage}/>
+            <img src={country.url_image} className={styles.smallImage}/>
+            <img src={country.url_image} className={styles.smallImage}/>
           </div>
         
         </div>
@@ -58,13 +95,13 @@ const DestinationDetailComponent = () => {
               <GoogleMap
                 mapContainerStyle={{width: '405px', height: '100%'}}
                 center={{
-                  lat: -27.590824,
-                  lng: -48.551262
+                  lat: country.latitude,
+                  lng: country.longitude
                 }}
                 zoom={15}
               >
                 <Marker 
-                  position={{ lat: -27.590824, lng: -48.551262 }}
+                  position={{ lat: country.latitude, lng: country.longitude }}
                   options={{ 
                     icon: {
                       url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
@@ -111,46 +148,46 @@ const DestinationDetailComponent = () => {
         </div>
       </div>
       <div className={styles.aboutContainer}>
-        <h2>About UK</h2>
-        <p>Istanbul, the vibrant and historic city straddling the continents of Europe and Asia, offers an energizing blend of cultures, sights, and experiences that captivate every traveler’s heart. As Turkey’s cultural and economic hub, Istanbul seamlessly fuses its rich heritage with modernity, creating an unforgettable journey for visitors.</p>
-        <p>The city is home to some of the world’s most iconic landmarks, including the awe-inspiring Hagia Sophia, the majestic Blue Mosque, and the grand Topkapi Palace, each bearing witness to Istanbul’s illustrious past. Wandering through bustling streets, you’ll find an array of delightful bazaars where you can haggle for unique souvenirs, immerse yourself in aromatic spices, and savor traditional Turkish delights. As the sun sets, head to the banks of the Bosphorus strait and savor the view of Istanbul’s skyline, a true testament to its allure as both a crossroads between Europe and Asia. Prepare your taste buds for an unforgettable gastronomic adventure in Istanbul, where a delightful fusion of flavors awaits you at every turn.</p>
+        <h2>About {country.name}</h2>
+        <p>{country.overview_country}.</p>
+        <p>{country.overview_country_curiosities}.</p>
       </div>
       <div className={styles.basicContainer}>
         <h2>Basic Information</h2>
         <div className={styles.infos}>
           <div className={styles.rowItems}>
             <p>Country</p>
-            <strong>Turkey</strong>
+            <strong>{country.name}</strong>
           </div>
           <div className={styles.rowItems}>
             <p>Language</p>
-            <strong>Turkish, Kurdish, Arabic, Zaza</strong>
+            <strong>{country.language}</strong>
           </div>
           <div className={styles.rowItems}>
             <p>Currency</p>
-            <strong>Turkish, Lira</strong>
+            <strong>{country.currency}</strong>
           </div>
           <div className={styles.rowItems}>
             <p>Area</p>
-            <strong>2,036 Square Miles</strong>
+            <strong>{country.area}</strong>
           </div>
           <div className={styles.rowItems}>
             <p>Population</p>
-            <strong>15M</strong>
+            <strong>{country.population}</strong>
           </div>
           <div className={styles.rowItems}>
             <p>Time Zone</p>
-            <strong>UTC+2</strong>
+            <strong>{country.time_zone}</strong>
           </div>
           <div className={styles.rowItems}>
             <p>Time to Travel</p>
-            <strong>May, June, July, August</strong>
+            <strong>{country.time_to_travel}</strong>
           </div>
         </div>
       </div>
       
       <div className={styles.seeAll}>
-        <h1>Popular Tours in UK</h1>
+        <h1>Popular Tours in {country.name}</h1>
         <button>See All<FaArrowRight className={styles.icon}/></button>
       </div>
         <div className={styles.swiperWrapper}>
