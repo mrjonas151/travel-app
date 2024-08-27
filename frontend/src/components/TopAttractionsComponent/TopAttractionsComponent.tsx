@@ -13,7 +13,11 @@ interface TopAttractionsComponentProps {
   max_weather: number;
 }
 
-const TopAttractionsComponent = () => {
+interface quantityProps {
+  quantity: number;
+}
+
+const TopAttractionsComponent = ({quantity}:quantityProps) => {
   const [topAttractions, setTopAttractions] = useState<TopAttractionsComponentProps[]>([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
@@ -22,7 +26,10 @@ const TopAttractionsComponent = () => {
     try {
       setLoading(true);
       const response = await api.get("/tourDetails/popular");
-      setTopAttractions(response.data.slice(0, 6));
+      const startIndex = quantity === 6 ? 0 : 6;
+      const endIndex = quantity === 6 ? 6 : 12;
+
+      setTopAttractions(response.data.slice(startIndex, endIndex));
     } catch (err) {
       setError("Error searching for top attractions");
     }finally{

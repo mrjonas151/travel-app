@@ -25,6 +25,7 @@ import { TourTypeComponentProps } from "../../components/TourTypeComponent/TourT
 import { TravelGuideComponentProps } from "../../components/TravelGuideComponent/TravelGuideComponent"
 import { TourDetailComponentProps } from "../../components/TourDetailComponent/TourDetailComponent"
 import api from "../../services/api"
+import Error from "../Error/Error"
 
 const Home = () => {
   const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
@@ -86,8 +87,8 @@ const Home = () => {
     getAllCategories();
   }, []);
 
-  if (loading) return <p>Waiting...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p></p>;
+  if (error) return <Error />;
 
 
   return (
@@ -171,7 +172,7 @@ const Home = () => {
                   <h1>Top Attractions Destination</h1>
                 </div>
                 <div className={styles.topAttractionsContainer}>
-                  <TopAttractionsComponent />
+                  <TopAttractionsComponent quantity={6} />
                 </div>
             </div>
         </div>

@@ -75,15 +75,23 @@ model Tour {
 }
 
 model Country {
-  id                    String   @id @default(uuid())
-  name                  String   @unique
-  travelers_quantity    Int
-  url_image             String
-  latitude              Float
-  longitude             Float
-  min_weather           Int 
-  max_weather           Int
-  tours                 Tour[]
+  id                            String   @id @default(uuid())
+  name                          String   @unique
+  travelers_quantity            Int
+  url_image                     String
+  latitude                      Float
+  longitude                     Float
+  min_weather                   Int 
+  max_weather                   Int
+  overview_country              String?
+  overview_country_curiosities  String?
+  language                      String?
+  currency                      String?
+  area                          String?
+  population                    String?
+  time_zone                     String?
+  time_to_travel                String?
+  tours                         Tour[]
 
   @@map("Countries")
 }

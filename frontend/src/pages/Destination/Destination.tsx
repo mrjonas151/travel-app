@@ -14,9 +14,9 @@ const Destination = () => {
           <SearchTravel />
       </div>
       <div className={styles.content}>
-        <TopAttractionsComponent />
+        <TopAttractionsComponent quantity={6} />
         <div className={`${styles.secondContent} ${styles.reversedContent}`}>
-          <TopAttractionsComponent />
+          <TopAttractionsComponent quantity={12} />
         </div>
       </div>
       <Footer />
