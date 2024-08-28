@@ -92,7 +92,7 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
           </div>
         </div>
         <div className={styles.bookComponent}>
-                <BookingForm />
+                <BookingForm price={initial_price} />
             </div>
       </div>
       

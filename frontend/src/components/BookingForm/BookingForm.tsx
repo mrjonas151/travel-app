@@ -1,19 +1,45 @@
 import React, { useState } from 'react';
 import styles from './BookingForm.module.css';
+import { toast } from 'react-toastify';
 
-const BookingForm: React.FC = () => {
+interface BookingFormProps {
+  price: number;
+}
+
+const BookingForm: React.FC<BookingFormProps> = ({price}) => {
   const [adults, setAdults] = useState(0);
   const [kids, setKids] = useState(0);
   const [children, setChildren] = useState(0);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
-  const total = 104 * (adults + kids + children);
+  const total = price * (adults + kids + children);
+
+    const handleBooking = () => {
+    if (!date) {
+      toast.error('Please select a date.');
+      return;
+    }
+    if (!time) {
+      toast.error('Please select a time.');
+      return;
+    }
+    if (total === 0) {
+      toast.error('Number of people should be more than 0.');
+      return;
+    }
+    toast.success('Booking successful!');
+    setAdults(0);
+    setKids(0);
+    setChildren(0);
+    setDate('');
+    setTime('');
+  };
 
   return (
     <div className={styles.container}>
         <div className={styles.price}>
-            <strong>$104</strong>
+            <strong>${price}</strong>
             <span>/ per person</span>
         </div> 
         <div className={styles.horizontalLine}></div>
@@ -83,7 +109,7 @@ const BookingForm: React.FC = () => {
         Total: <span>${total}</span>
       </div>
       
-      <button className={styles.bookButton}>Book now</button>
+      <button className={styles.bookButton} onClick={handleBooking}>Book now</button>
     </div>
   );
 };
