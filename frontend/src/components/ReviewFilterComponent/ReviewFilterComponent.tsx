@@ -9,16 +9,21 @@ const categories = [
   "1 Stars & Up"
 ];
 
-const ReviewFilterComponent = () => {
+interface ReviewFilterComponentProps {
+  onReviewFilterChange: (selectedCategories: string[]) => void;
+}
+
+const ReviewFilterComponent: React.FC<ReviewFilterComponentProps> = ({ onReviewFilterChange }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSelectedCategories((prev) =>
-      prev.includes(value)
-        ? prev.filter((category) => category !== value)
-        : [...prev, value]
-    );
+    const updatedCategories = selectedCategories.includes(value)
+      ? selectedCategories.filter((category) => category !== value)
+      : [...selectedCategories, value];
+
+    setSelectedCategories(updatedCategories);
+    onReviewFilterChange(updatedCategories);
   };
 
   return (

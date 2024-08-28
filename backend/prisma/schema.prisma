@@ -74,6 +74,14 @@ model Tour {
   countryId               String
 }
 
+model Continent {
+  id                String   @id @default(uuid())
+  name              String   @unique
+  countries         Country[]
+  
+  @@map("Continents")
+}
+
 model Country {
   id                            String   @id @default(uuid())
   name                          String   @unique
@@ -92,6 +100,8 @@ model Country {
   time_zone                     String?
   time_to_travel                String?
   tours                         Tour[]
+  continent                     Continent @relation(fields: [continentId], references: [id])
+  continentId                   String
 
   @@map("Countries")
 }

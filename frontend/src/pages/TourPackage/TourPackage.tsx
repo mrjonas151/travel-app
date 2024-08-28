@@ -24,6 +24,7 @@ const TourPackage = () => {
   const [priceFilter, setPriceFilter] = useState<number>(100000);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [reviewFilter, setReviewFilter] = useState<string[]>([]);
 
   const getAllTours = async () => {
     setLoading(true);
@@ -51,6 +52,11 @@ const TourPackage = () => {
     return sorted;
   };
 
+  const handleReviewFilterChange = (selectedCategories: string[]) => {
+    setReviewFilter(selectedCategories);
+    setCurrentPage(0);
+  };
+
   const filteredTours = sortedTours().filter((tour) => {
     const price = Number(tour.initial_price);
     const filterPrice = Number(priceFilter);
@@ -59,10 +65,15 @@ const TourPackage = () => {
       tour.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tour.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tour.country.name.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(tour.category.title);
 
-    return price <= filterPrice && matchesSearch && matchesCategory;
+      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(tour.category.title);
+      
+      const matchesReview = reviewFilter.length === 0 || reviewFilter.some((filter) => {
+        const filterRating = parseInt(filter.split(' ')[0], 10);
+        return tour.averageRating >= filterRating;
+    });
+
+    return price <= filterPrice && matchesSearch && matchesCategory && matchesReview;
   });
   
   const offset = currentPage * toursPerPage;
@@ -122,7 +133,7 @@ const TourPackage = () => {
           <FilterByComponent onPriceChange={handlePriceFilterChange} />
           <CategoriesComponent onCategoryChange={handleCategoryChange} />
           <DestinationsFilterComponent />
-          <ReviewFilterComponent />
+          <ReviewFilterComponent onReviewFilterChange={handleReviewFilterChange} />
         </div>
         <div className={styles.allTours}>
           {currentTours.map((tour) => (
