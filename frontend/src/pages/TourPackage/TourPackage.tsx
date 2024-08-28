@@ -22,6 +22,7 @@ const TourPackage = () => {
   const toursPerPage = 9;
   const [sortOption, setSortOption] = useState('popularity');
   const [priceFilter, setPriceFilter] = useState<number>(100000);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const getAllTours = async () => {
     setLoading(true);
@@ -49,11 +50,16 @@ const TourPackage = () => {
     return sorted;
   };
 
-  const filteredTours = sortedTours().filter(tour => {
+  const filteredTours = sortedTours().filter((tour) => {
     const price = Number(tour.initial_price);
     const filterPrice = Number(priceFilter);
 
-    return price <= filterPrice;
+    const matchesSearch =
+      tour.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tour.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tour.country.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return price <= filterPrice && matchesSearch;
   });
   
   const offset = currentPage * toursPerPage;
@@ -67,6 +73,11 @@ const TourPackage = () => {
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(e.target.value);
     setCurrentPage(0);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(0); 
   };
 
   const handlePriceFilterChange = (price: number) => {
@@ -87,7 +98,7 @@ const TourPackage = () => {
       <div className={styles.mainPage}>
         <div className={styles.content}>
           <div className={styles.rowContent}>
-            <SearchFilterComponent />
+            <SearchFilterComponent onSearchChange={handleSearchChange} />
             <div className={styles.rowFilters}>
               <p>{filteredTours.length} Tours</p>
               <div>

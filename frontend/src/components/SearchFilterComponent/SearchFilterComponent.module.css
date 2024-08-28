@@ -32,6 +32,8 @@
     font-size: 16px;
     border-radius: 5px;
     background-color: white;
+    position: relative;
+    right: 7px;
 }
 
 .searchIcon {
