@@ -17,6 +17,10 @@ const LoginForm = () => {
         await handleSignIn({ email, password });
     };
 
+    const goToHome = () => {
+        window.location.href = '/home';
+    }
+
     return (
         <main className={styles.mainContainer}>
             <div className={styles.wrapper}>
@@ -73,6 +77,10 @@ const LoginForm = () => {
                         <p>
                             Don't have an account? <Link to='/sign-up'>Register</Link>
                         </p>
+                    </div>
+                    <div className={styles.anonymousContainer}>
+                        <p>or</p>
+                        <h2 onClick={goToHome}>Sign in as anonymous</h2>
                     </div>
                 </form>
             </div>

@@ -22,7 +22,10 @@ const TourPackage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const toursPerPage = 9;
 
+  const [sortOption, setSortOption] = useState('popularity');
+
   const getAllTours = async () => {
+    setLoading(true);
     try {
       const response = await api.get('/tourDetails');
       setTours(response.data);  
@@ -37,12 +40,27 @@ const TourPackage = () => {
     getAllTours();
   }, []);
 
+  const sortedTours = () => {
+    let sorted = [...tours];
+    if (sortOption === 'price') {
+      sorted.sort((a, b) => a.initial_price - b.initial_price);
+    } else if (sortOption === 'rating') {
+      sorted.sort((a, b) => b.averageRating - a.averageRating);
+    }
+    return sorted;
+  };
+
   const offset = currentPage * toursPerPage;
-  const currentTours = tours.slice(offset, offset + toursPerPage);
+  const currentTours = sortedTours().slice(offset, offset + toursPerPage);
   const pageCount = Math.ceil(tours.length / toursPerPage);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
     setCurrentPage(selectedItem.selected);
+  };
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortOption(e.target.value); 
+    setCurrentPage(0); 
   };
 
   if (loading) return <p>Waiting...</p>;
@@ -63,10 +81,10 @@ const TourPackage = () => {
               <p>{tours.length} Tours</p>
               <div>
                 <span>Sort by</span>
-                <select>
-                  <option>Popularity</option>
-                  <option>Price</option>
-                  <option>Rating</option>
+                <select value={sortOption} onChange={handleSortChange}>
+                  <option value="popularity">Popularity</option>
+                  <option value="price">Price</option>
+                  <option value="rating">Rating</option>
                 </select>
               </div>
             </div>

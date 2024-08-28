@@ -132,3 +132,24 @@
     height: 20px;
     margin-right: 10px;
 }
+
+.anonymousContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    bottom: 7px;
+}
+
+.anonymousContainer h2{
+    font-size: 22px;
+    transition: all 0.3s;
+}
+
+.anonymousContainer h2:hover{
+    color: #f84d50;
+    cursor: pointer;
+    text-decoration: underline;
+}
