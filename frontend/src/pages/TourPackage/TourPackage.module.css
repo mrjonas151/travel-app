@@ -33,7 +33,7 @@
 }
 
 .popularTourItem {
-    flex: 1 1 calc(33.33% - 20px);
+   width: 439px;
     margin: 10px;
     box-sizing: border-box;
     margin-bottom: 25px;
