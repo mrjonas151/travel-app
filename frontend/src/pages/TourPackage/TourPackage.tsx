@@ -12,11 +12,15 @@ import SearchTravel from "../../components/SearchTravel/SearchTravel"
 import styles from './TourPackage.module.css'
 import api from "../../services/api"
 import { TourDetailComponentProps } from "../../components/TourDetailComponent/TourDetailComponent"
+import ReactPaginate from 'react-paginate'
 
 const TourPackage = () => {
   const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const toursPerPage = 9;
 
   const getAllTours = async () => {
     try {
@@ -32,6 +36,14 @@ const TourPackage = () => {
   useEffect(() => {
     getAllTours();
   }, []);
+
+  const offset = currentPage * toursPerPage;
+  const currentTours = tours.slice(offset, offset + toursPerPage);
+  const pageCount = Math.ceil(tours.length / toursPerPage);
+
+  const handlePageClick = (selectedItem: { selected: number }) => {
+    setCurrentPage(selectedItem.selected);
+  };
 
   if (loading) return <p>Waiting...</p>;
   if (error) return <p>{error}</p>;
@@ -67,7 +79,7 @@ const TourPackage = () => {
           <ReviewFilterComponent />
         </div>
         <div className={styles.allTours}>
-            {tours.map((tour) => (
+            {currentTours.map((tour) => (
               <div key={tour.id} className={styles.popularTourItem}>
                 <PopularToursComponent
                   id={tour.id}
@@ -97,9 +109,18 @@ const TourPackage = () => {
               </div>
             ))}
         </div>
-        <div className={styles.space}>
-          <h1>Teste</h1>
-        </div>
+        <ReactPaginate
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={styles.pagination}
+          activeClassName={styles.active}
+        />
       </div>
       
       <Footer />

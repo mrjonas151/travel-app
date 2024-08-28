@@ -75,3 +75,33 @@
     position: relative;
     right: 15px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    bottom: 70px;
+    font-size: 1.1rem;
+    color: #081134;
+    left: 170px;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination li a {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.active a {
+    background-color: #f84d50;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
