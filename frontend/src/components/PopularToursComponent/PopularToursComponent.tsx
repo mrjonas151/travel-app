@@ -9,6 +9,16 @@ const PopularToursComponent = ({ id, url_image, city, country, title, averageRat
         window.location.href = `/tour-details/${id}`;
     };
 
+    const calculateDays = (startDate: Date, endDate: Date): number => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diffTime = Math.abs(end.getTime() - start.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    return diffDays;
+  };
+
+  const duration = calculateDays(new Date(initial_date), new Date(final_date));
+
     return (
     <div className={styles.mainContainer} onClick={handleClick}>
         <img src={url_image} alt='Place image' />
@@ -28,7 +38,7 @@ const PopularToursComponent = ({ id, url_image, city, country, title, averageRat
                 </div>
                 <div className={styles.days}>
                     <img src={clock} alt='clock logo'/>
-                    <p className={styles.reviewQ}>8 days</p>
+                    <p className={styles.reviewQ}>{duration} days</p>
                 </div>
             </div>
             <div className={styles.horizontalLine}></div>

@@ -1,19 +1,37 @@
-import { useState } from 'react';
 import styles from './CategoriesComponent.module.css';
+import { useState, useEffect } from 'react';
+import api from '../../services/api';
 
-const categories = [
-  "Adventure",
-  "Beaches",
-  "Boat Tours",
-  "City Tours",
-  "Food",
-  "Hiking",
-  "Honeymoon",
-  "Museum Tours"
-];
+interface Category {
+  id: string;
+  title: string;
+  tour_quantity: number;
+  price: number;
+  tours: Tour[];
+}
+
+interface Tour {
+  id: string;
+  title: string;
+}
 
 const CategoriesComponent = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [error, setError] = useState('');
+
+    const fetchCategories = async () => {
+    try {
+      const response = await api.get('/categories'); 
+      setCategories(response.data); 
+    } catch (err) {
+      setError('Failed to bring categories');
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -24,21 +42,23 @@ const CategoriesComponent = () => {
     );
   };
 
+  if (error) return <p>{error}</p>;
+
   return (
     <div className={styles.mainContainer}>
       <h2 className={styles.categoriesHeader}>Categories</h2>
       <ul className={styles.categoriesList}>
         {categories.map((category) => (
-          <li key={category} className={styles.categoryItem}>
+          <li key={category.id} className={styles.categoryItem}>
             <label>
               <input
                 type="checkbox"
-                value={category}
-                checked={selectedCategories.includes(category)}
+                value={category.title}
+                checked={selectedCategories.includes(category.title)}
                 onChange={handleCheckboxChange}
                 className={styles.checkbox}
               />
-              {category}
+              {category.title}
             </label>
           </li>
         ))}
