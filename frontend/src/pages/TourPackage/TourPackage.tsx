@@ -23,6 +23,7 @@ const TourPackage = () => {
   const [sortOption, setSortOption] = useState('popularity');
   const [priceFilter, setPriceFilter] = useState<number>(100000);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const getAllTours = async () => {
     setLoading(true);
@@ -58,8 +59,10 @@ const TourPackage = () => {
       tour.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tour.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tour.country.name.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(tour.category.title);
 
-    return price <= filterPrice && matchesSearch;
+    return price <= filterPrice && matchesSearch && matchesCategory;
   });
   
   const offset = currentPage * toursPerPage;
@@ -82,6 +85,11 @@ const TourPackage = () => {
 
   const handlePriceFilterChange = (price: number) => {
     setPriceFilter(price);
+    setCurrentPage(0);
+  };
+
+  const handleCategoryChange = (categories: string[]) => {
+    setSelectedCategories(categories);
     setCurrentPage(0);
   };
 
@@ -112,7 +120,7 @@ const TourPackage = () => {
             </div>
           </div>
           <FilterByComponent onPriceChange={handlePriceFilterChange} />
-          <CategoriesComponent />
+          <CategoriesComponent onCategoryChange={handleCategoryChange} />
           <DestinationsFilterComponent />
           <ReviewFilterComponent />
         </div>

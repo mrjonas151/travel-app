@@ -12,19 +12,19 @@ const SearchTravel = () => {
             <div className={styles.rowComponents}>
                 <div className={styles.columnComponents}>
                     <h2>Destination</h2>
-                    <InputComponent imgSrc={telegrama} imgAlt='Telegrama logo' />
+                    <InputComponent type="text" imgSrc={telegrama} imgAlt='Telegrama logo' placeholder='Where to go?'/>
                 </div>
                 <div className={styles.columnComponents}>
                     <h2>Type</h2>
-                    <InputComponent imgSrc={flag} imgAlt='Flag logo' />
+                    <InputComponent type="text" imgSrc={flag} imgAlt='Flag logo' placeholder='Activity' />
                 </div>
                 <div className={styles.columnComponents}>
                     <h2>When</h2>
-                    <InputComponent imgSrc={calendar} imgAlt='Calendar logo' />
+                    <InputComponent type="date" imgSrc={calendar} imgAlt='Calendar logo' placeholder='Date' />
                 </div>
                 <div className={styles.columnComponents}>
                     <h2>Guests</h2>
-                    <InputComponent imgSrc={guests} imgAlt='Guests logo' />
+                    <InputComponent type="number" imgSrc={guests} imgAlt='Guests logo' placeholder='0' min={0}/>
                 </div>
                 <div>
                     <button className={styles.button}>Search</button>

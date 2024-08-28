@@ -15,7 +15,11 @@ interface Tour {
   title: string;
 }
 
-const CategoriesComponent = () => {
+interface CategoriesComponentProps {
+  onCategoryChange: (selectedCategories: string[]) => void;
+}
+
+const CategoriesComponent = ({ onCategoryChange }: CategoriesComponentProps) => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [error, setError] = useState('');
@@ -35,11 +39,14 @@ const CategoriesComponent = () => {
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSelectedCategories((prev) =>
-      prev.includes(value)
+    setSelectedCategories((prev) => {
+      const newSelection = prev.includes(value)
         ? prev.filter((category) => category !== value)
-        : [...prev, value]
-    );
+        : [...prev, value];
+
+      onCategoryChange(newSelection);
+      return newSelection;
+    });
   };
 
   if (error) return <p>{error}</p>;
