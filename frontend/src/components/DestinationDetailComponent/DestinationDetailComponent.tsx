@@ -27,7 +27,7 @@ export interface CountryDetailProps {
   time_to_travel: string;
 }
 
-const DestinationDetailComponent = ({name, travelers_quantity, url_image, latitude, longitude, min_weather, max_weather, overview_country, overview_country_curiosities, language, currency, area, population, time_zone, time_to_travel}:CountryDetailProps) => {
+const DestinationDetailComponent = ({id, name, travelers_quantity, url_image, latitude, longitude, min_weather, max_weather, overview_country, overview_country_curiosities, language, currency, area, population, time_zone, time_to_travel}:CountryDetailProps) => {
   const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -35,8 +35,8 @@ const DestinationDetailComponent = ({name, travelers_quantity, url_image, latitu
   const getAllTours = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/tourDetails');
-      setTours(response.data);  
+      const response = await api.get(`/tourDetails/countries/${id}`);
+      setTours(response.data.tours);  
     } catch (err) {
       setError('Error searching for tours');
     } finally {
@@ -51,7 +51,11 @@ const DestinationDetailComponent = ({name, travelers_quantity, url_image, latitu
 
   useEffect(() => {
     getAllTours();
-  }, []);
+  }, [id]);
+
+  const handleRedirectAllTours = () => {
+    window.location.href = `/tour-package`;
+  }
 
   if (loading) return <p>Waiting...</p>;
   if (error) return <p>{error}</p>;
@@ -169,7 +173,7 @@ const DestinationDetailComponent = ({name, travelers_quantity, url_image, latitu
       
       <div className={styles.seeAll}>
         <h1>Popular Tours in {name}</h1>
-        <button>See All<FaArrowRight className={styles.icon}/></button>
+        <button onClick={handleRedirectAllTours}>See All<FaArrowRight className={styles.icon}/></button>
       </div>
         <div className={styles.swiperWrapper}>
             <div className={styles.popularToursCarousel}>
@@ -181,32 +185,27 @@ const DestinationDetailComponent = ({name, travelers_quantity, url_image, latitu
                 className={styles.swiperContainer}
               >
               {tours.map((tour) => (
-                <SwiperSlide key={Number(tour.id)}>
-                  <PopularToursComponent
-                    id={tour.id}
-                    url_image={tour.url_image}
-                    city={tour.city}
-                    country={tour.country}
-                    title={tour.title}
-                    averageRating={tour.averageRating}
-                    userRatings={tour.userRatings}
-                    initial_date={tour.initial_date}
-                    final_date={tour.final_date}
-                    initial_price={tour.initial_price} 
-                    max_people={tour.max_people} 
-                    min_age={tour.min_age} 
-                    tour_type={tour.tour_type} 
-                    overview_city={tour.overview_city} 
-                    overview_curiosities={tour.overview_curiosities} 
-                    latitude={tour.latitude} 
-                    longitude={tour.longitude} 
-                    category={{
-                      id: tour.category.id,
-                      title: tour.category.title,
-                      tour_quantity: tour.category.tour_quantity,
-                      price: tour.category.price
-                    }}                
-                  />
+                <SwiperSlide key={tour.id}>
+                   <PopularToursComponent
+                      id={tour.id}
+                      url_image={tour.url_image}
+                      city={tour.city}
+                      country={tour.country}
+                      title={tour.title}
+                      averageRating={tour.averageRating}
+                      userRatings={tour.userRatings}
+                      initial_date={tour.initial_date}
+                      final_date={tour.final_date}
+                      initial_price={tour.initial_price}
+                      max_people={tour.max_people}
+                      min_age={tour.min_age}
+                      tour_type={tour.tour_type}
+                      overview_city={tour.overview_city}
+                      overview_curiosities={tour.overview_curiosities}
+                      latitude={tour.latitude}
+                      longitude={tour.longitude}
+                      category={tour.category}
+                    />
                 </SwiperSlide>
               ))}
 
