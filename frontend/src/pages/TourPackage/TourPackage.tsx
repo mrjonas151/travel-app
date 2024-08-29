@@ -13,6 +13,7 @@ import styles from './TourPackage.module.css';
 import api from "../../services/api";
 import { TourDetailComponentProps } from "../../components/TourDetailComponent/TourDetailComponent";
 import ReactPaginate from 'react-paginate';
+import { useLocation } from "react-router-dom";
 
 const TourPackage = () => {
   const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
@@ -26,6 +27,16 @@ const TourPackage = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [reviewFilter, setReviewFilter] = useState<string[]>([]);
   const [selectedDestinations, setSelectedDestinations] = useState<string[]>([]);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search); 
+    const filter = params.get('filter');
+    if (filter) {
+      setSelectedCategories([filter]);
+    }
+  }, [location.search]);
 
   const getAllTours = async () => {
     setLoading(true);
