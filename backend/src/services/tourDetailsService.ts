@@ -154,6 +154,22 @@ class TourDetailsService {
     });
     return tour;
   }
+
+  static async getAllContinentsService() {
+    const continents = await prisma.continent.findMany({
+      select: {
+        id: true,
+        name: true,
+        countries: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    });
+    return continents;
+  }
 }
 
 export { TourDetailsService };

@@ -42,6 +42,15 @@ class PopularToursController {
       return res.status(500).json({ message: "Server error" });
     }
   }
+
+  static async getAllContinentsController(req: Request, res: Response) {
+      try {
+        const continents = await TourDetailsService.getAllContinentsService();
+        return res.json(continents);
+      } catch (error) {
+        return res.status(500).json({ message: 'Error searching continents' });
+      }
+  }
 }
 
 export { PopularToursController };
