@@ -30,45 +30,42 @@ const TourPackage = () => {
 
   const location = useLocation();
 
-  const applyFilterFromURL = () => {
-    const params = new URLSearchParams(location.search);
-    const filter = params.get('filter');
-    const search = params.get('search');
-
-    if (search) {
-      setSearchTerm(search);
-    }
-    
-    if (filter) {
-      setSelectedCategories([filter]); 
-    }
-  };
-
   useEffect(() => {
+    const applyFilterFromURL = () => {
+      const params = new URLSearchParams(location.search);
+      const filter = params.get('filter');
+      const search = params.get('search');
+      const type = params.get('type');
+
+      if (search) {
+        setSearchTerm(search);
+      }
+
+      if (filter) {
+        setSelectedCategories(prev => [...new Set([...prev, filter])]); 
+      }
+
+      if (type) {
+        setSelectedCategories(prev => [...new Set([...prev, type])]); 
+      }
+    };
+
     applyFilterFromURL();
   }, [location.search]);
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search); 
-    const filter = params.get('filter');
-    if (filter) {
-      setSelectedCategories([filter]);
-    }
-  }, [location.search]);
+    const getAllTours = async () => {
+      setLoading(true);
+      try {
+        const response = await api.get('/tourDetails');
+        setTours(response.data);
+      } catch (err) {
+        setError('Error searching for tours');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const getAllTours = async () => {
-    setLoading(true);
-    try {
-      const response = await api.get('/tourDetails');
-      setTours(response.data);
-    } catch (err) {
-      setError('Error searching for tours');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
     getAllTours();
   }, []);
 
@@ -94,16 +91,17 @@ const TourPackage = () => {
     const matchesDestination = selectedDestinations.length === 0 ||
       selectedDestinations.includes(tour.country.name);
 
-      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(tour.category.title);
-      
+    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(tour.category.title);
+    
     const matchesReview = reviewFilter.length === 0 || reviewFilter.some((filter) => {
       const filterRating = parseInt(filter.split(' ')[0], 10);
       return tour.averageRating >= filterRating;
     });
 
+
     return price <= filterPrice && matchesSearch && matchesCategory && matchesReview && matchesDestination;
   });
-  
+
   const offset = currentPage * toursPerPage;
   const currentTours = filteredTours.slice(offset, offset + toursPerPage);
   const pageCount = Math.ceil(filteredTours.length / toursPerPage);
@@ -129,7 +127,7 @@ const TourPackage = () => {
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(0); 
+    setCurrentPage(0);
   };
 
   const handlePriceFilterChange = (price: number) => {
