@@ -25,6 +25,7 @@ const TourPackage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [reviewFilter, setReviewFilter] = useState<string[]>([]);
+  const [selectedDestinations, setSelectedDestinations] = useState<string[]>([]);
 
   const getAllTours = async () => {
     setLoading(true);
@@ -52,11 +53,6 @@ const TourPackage = () => {
     return sorted;
   };
 
-  const handleReviewFilterChange = (selectedCategories: string[]) => {
-    setReviewFilter(selectedCategories);
-    setCurrentPage(0);
-  };
-
   const filteredTours = sortedTours().filter((tour) => {
     const price = Number(tour.initial_price);
     const filterPrice = Number(priceFilter);
@@ -66,14 +62,17 @@ const TourPackage = () => {
       tour.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tour.country.name.toLowerCase().includes(searchTerm.toLowerCase());
 
+    const matchesDestination = selectedDestinations.length === 0 ||
+      selectedDestinations.includes(tour.country.name);
+
       const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(tour.category.title);
       
-      const matchesReview = reviewFilter.length === 0 || reviewFilter.some((filter) => {
-        const filterRating = parseInt(filter.split(' ')[0], 10);
-        return tour.averageRating >= filterRating;
+    const matchesReview = reviewFilter.length === 0 || reviewFilter.some((filter) => {
+      const filterRating = parseInt(filter.split(' ')[0], 10);
+      return tour.averageRating >= filterRating;
     });
 
-    return price <= filterPrice && matchesSearch && matchesCategory && matchesReview;
+    return price <= filterPrice && matchesSearch && matchesCategory && matchesReview && matchesDestination;
   });
   
   const offset = currentPage * toursPerPage;
@@ -82,6 +81,16 @@ const TourPackage = () => {
 
   const handlePageClick = (selectedItem: { selected: number }) => {
     setCurrentPage(selectedItem.selected);
+  };
+
+  const handleReviewFilterChange = (selectedCategories: string[]) => {
+    setReviewFilter(selectedCategories);
+    setCurrentPage(0);
+  };
+
+  const handleDestinationChange = (destinations: string[]) => {
+    setSelectedDestinations(destinations);
+    setCurrentPage(0);
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -132,7 +141,7 @@ const TourPackage = () => {
           </div>
           <FilterByComponent onPriceChange={handlePriceFilterChange} />
           <CategoriesComponent onCategoryChange={handleCategoryChange} />
-          <DestinationsFilterComponent />
+          <DestinationsFilterComponent onDestinationChange={handleDestinationChange} />
           <ReviewFilterComponent onReviewFilterChange={handleReviewFilterChange} />
         </div>
         <div className={styles.allTours}>
