@@ -6,10 +6,10 @@ import { FaVideo, FaImage } from 'react-icons/fa'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 import BookingForm from '../BookingForm/BookingForm'
 import ReviewForm from '../ReviewForm/ReviewForm'
-import person from '../../assets/person.jpg'
 import white_star from '../../assets/white_star.png'
 import RatingCard from '../RatingCard/RatingCard'
 import { toast } from 'react-toastify'
+import user_icon from '../../assets/user_icon.png'
 
 export interface TourDetailComponentProps {
   id: string;
@@ -38,6 +38,8 @@ export interface TourDetailComponentProps {
     amentities: number;
     prices: number;
     comfort: number;
+    comment: string;
+    createdAt: string;
   }[];
   category: {
     id: string;
@@ -81,6 +83,7 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
     }
   };
 
+  console.log(userRatings);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.rowBook}>
@@ -159,36 +162,48 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
         </div>
         <div className={styles.reviewsContainer}>
             <h2>Average Reviews</h2>
-            <div className={styles.mainRate}>
-              <RatingCard rating={4.8} categories={[
-                { name: 'Services', score: 4.5 },
-                { name: 'Prices', score: 4.7 },
-                { name: 'Locations', score: 2.1 },
-                { name: 'Food', score: 4.8 },
-                { name: 'Amenities', score: 4.6 },
-                { name: 'Room comfort and quality', score: 4.7 }
-              ]} />
+          <div className={styles.mainRate}>
+            <RatingCard
+              rating={userRatings.length > 0 
+              ? parseFloat((userRatings.reduce((sum, rating) => sum + (rating.services + rating.prices + rating.locations + rating.comfort + rating.amentities) / 5, 0) / userRatings.length).toFixed(1))
+              : 5}
+              categories={[
+                { name: 'Services', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.services, 0) / userRatings.length).toFixed(1)) },
+                { name: 'Prices', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.prices, 0) / userRatings.length).toFixed(1)) },
+                { name: 'Locations', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.locations, 0) / userRatings.length).toFixed(1)) },
+                { name: 'Comfort', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.comfort, 0) / userRatings.length).toFixed(1)) },
+                { name: 'Amenities', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.amentities, 0) / userRatings.length).toFixed(1)) },
+              ]}
+            />
             </div>
             <div>
               <div className={styles.showingNumber}>
                 <h3>Showing {userRatings.length} reviews</h3>
               </div>
               <div className={styles.mainCommentContainer}>
-                <div className={styles.comment}>
-                  <img src={person} alt="User profile" className={styles.profilePic} />
-                  <div className={styles.commentContent}>
-                    <span className={styles.commentDate}>March 20, 2022</span>
-                    <strong className={styles.commentAuthor}>Sindy Simmons</strong>
-                    <div className={styles.firstReview}>
+                {userRatings.map((rating, index) => (
+                  <div key={index} className={styles.comment}>
+                    <img src={user_icon} alt="User profile" className={styles.profilePic} />
+                    <div className={styles.commentContent}>
+                      <span className={styles.commentDate}>
+                        {new Date(rating.createdAt).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </span>
+                      <strong className={styles.commentAuthor}>{rating.user_name}</strong>
+                      <div className={styles.firstReview}>
                         <div className={styles.stars}>
-                            <img src={white_star} />
-                            <p>4.8</p>
+                          <img src={white_star} alt="Rating Star" />
+                          <p>{rating.services.toFixed(1)}</p>
                         </div>
-                        <p className={styles.reviewP}>15 reviews</p>
+                        <p className={styles.reviewP}>122 Reviews</p>
+                      </div>
+                      <p className={styles.commentText}>{rating.comment}</p>
                     </div>
-                    <p className={styles.commentText}>This tour was absolutely amazing! The guide was knowledgeable and the sights were breathtaking. I highly recommend it to anyone looking to explore the beauty of the West Coast.</p>
                   </div>
-                </div>
+                ))}
               </div>
               <div className={styles.reviewForm}>
                 <ReviewForm />

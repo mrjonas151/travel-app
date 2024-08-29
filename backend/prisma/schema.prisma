@@ -119,6 +119,9 @@ model UserRating {
   comfort     Int
   tour        Tour     @relation(fields: [idTour], references: [id])
   user        User     @relation(fields: [idUser], references: [id])
+  comment     String?
+
+  createdAt   DateTime @default(now())
   
   @@map("UserRatings")
 }

@@ -43,6 +43,28 @@ class PopularToursController {
     }
   }
 
+  static async createUserReviewController(req: Request, res: Response) {
+    const { id } = req.params;
+    const { user_id, user_name, user_email, services, locations, amentities, prices, comfort, comment } = req.body;
+
+    try {
+      const newReview = await TourDetailsService.createUserReviewService(id, {
+        user_id,
+        user_name,
+        user_email,
+        services,
+        locations,
+        amentities,
+        prices,
+        comfort,
+        comment,
+      });
+      return res.status(201).json(newReview);
+    } catch (error) {
+      return res.status(500).json({ error: 'Error adding review' });
+    }
+  }
+
   static async getAllContinentsController(req: Request, res: Response) {
       try {
         const continents = await TourDetailsService.getAllContinentsService();

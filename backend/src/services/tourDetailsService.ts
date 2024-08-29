@@ -28,6 +28,8 @@ class TourDetailsService {
             amentities: true,
             prices: true,
             comfort: true,
+            comment: true,
+            createdAt: true,
           },
         },
         category: {
@@ -121,6 +123,8 @@ class TourDetailsService {
                 amentities: true,
                 prices: true,
                 comfort: true,
+                comment: true,
+                createdAt: true,
               },
             },
             category: {
@@ -179,6 +183,8 @@ class TourDetailsService {
             amentities: true,
             prices: true,
             comfort: true,
+            comment: true,
+            createdAt: true,
           },
         },
         category: {
@@ -205,6 +211,39 @@ class TourDetailsService {
     });
     return tour;
   }
+
+static async createUserReviewService(tourId: string, review: {
+  user_id: string,
+  user_name: string,
+  user_email: string,
+  services: number,
+  locations: number,
+  amentities: number,
+  prices: number,
+  comfort: number,
+  comment: string,
+}) {
+  try {
+    const newReview = await prisma.userRating.create({
+      data: {
+        user_name: review.user_name,
+        user_email: review.user_email,
+        services: review.services,
+        locations: review.locations,
+        amentities: review.amentities,
+        prices: review.prices,
+        comfort: review.comfort,
+        comment: review.comment,
+        idTour: tourId,
+        idUser: review.user_id, 
+      },
+    });
+    return newReview;
+  } catch (error) {
+    console.error('Error creating review:', error); 
+    throw error; 
+  }
+}
 
   static async getAllContinentsService() {
     const continents = await prisma.continent.findMany({
