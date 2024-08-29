@@ -77,6 +77,19 @@
     margin-right: 0.5em;
 }
 
+.input{
+    background-color: transparent;
+    color: gray;
+    font-size: 14px;
+    padding: 0.1em;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.lupa{
+    cursor: pointer;
+}
+
 .userImg{
     width: 20px !important;
 }

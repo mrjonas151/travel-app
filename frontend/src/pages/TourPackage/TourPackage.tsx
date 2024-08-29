@@ -33,6 +33,12 @@ const TourPackage = () => {
   const applyFilterFromURL = () => {
     const params = new URLSearchParams(location.search);
     const filter = params.get('filter');
+    const search = params.get('search');
+
+    if (search) {
+      setSearchTerm(search);
+    }
+    
     if (filter) {
       setSelectedCategories([filter]); 
     }

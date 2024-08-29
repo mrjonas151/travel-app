@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import styles from "./Header.module.css"
 import logo from "../../assets/logo.png"
 import twitter from "../../assets/twitter.png"
@@ -7,8 +7,23 @@ import google from "../../assets/google.png"
 import pinterest from "../../assets/pinterest.png"
 import lupa from "../../assets/lupa.png"
 import user from "../../assets/user.png"
+import { useState } from "react"
 
 const Header = () => {
+  const [showInput, setShowInput] = useState(false);
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    setShowInput(!showInput);
+  }
+
+  const handleKeyPress = (event: { key: string }) => {
+    if (event.key === "Enter") {
+       navigate(`/tour-package?search=${encodeURIComponent(search)}`);
+    }
+  };
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.contactInfo}>
@@ -45,7 +60,8 @@ const Header = () => {
         
 
         <div className={styles.searchContainer}>
-          <img src={lupa} alt="search" />
+          {showInput && <input className={styles.input} placeholder="Search destination..." onChange={(e) => setSearch(e.target.value)} onKeyPress={handleKeyPress} />}
+          <img onClick={handleSearch} src={lupa} alt="search" className={styles.lupa} />
           <img src={user} alt="user" className={styles.userImg} />
           <Link to="/" className={styles.loginLink}>Login / SignUp</Link>
         </div>
