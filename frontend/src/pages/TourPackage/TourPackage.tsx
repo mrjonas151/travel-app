@@ -30,6 +30,18 @@ const TourPackage = () => {
 
   const location = useLocation();
 
+  const applyFilterFromURL = () => {
+    const params = new URLSearchParams(location.search);
+    const filter = params.get('filter');
+    if (filter) {
+      setSelectedCategories([filter]); 
+    }
+  };
+
+  useEffect(() => {
+    applyFilterFromURL();
+  }, [location.search]);
+
   useEffect(() => {
     const params = new URLSearchParams(location.search); 
     const filter = params.get('filter');
@@ -151,7 +163,7 @@ const TourPackage = () => {
             </div>
           </div>
           <FilterByComponent onPriceChange={handlePriceFilterChange} />
-          <CategoriesComponent onCategoryChange={handleCategoryChange} />
+          <CategoriesComponent onCategoryChange={handleCategoryChange} selectedCategories={selectedCategories} />
           <DestinationsFilterComponent onDestinationChange={handleDestinationChange} />
           <ReviewFilterComponent onReviewFilterChange={handleReviewFilterChange} />
         </div>

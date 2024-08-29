@@ -17,11 +17,11 @@ interface Tour {
 
 interface CategoriesComponentProps {
   onCategoryChange: (selectedCategories: string[]) => void;
+  selectedCategories: string[];
 }
 
-const CategoriesComponent = ({ onCategoryChange }: CategoriesComponentProps) => {
+const CategoriesComponent = ({ onCategoryChange, selectedCategories }: CategoriesComponentProps) => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [error, setError] = useState('');
 
     const fetchCategories = async () => {
@@ -39,14 +39,11 @@ const CategoriesComponent = ({ onCategoryChange }: CategoriesComponentProps) => 
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSelectedCategories((prev) => {
-      const newSelection = prev.includes(value)
-        ? prev.filter((category) => category !== value)
-        : [...prev, value];
+    const newSelection = selectedCategories.includes(value)
+      ? selectedCategories.filter((category) => category !== value)
+      : [...selectedCategories, value];
 
-      onCategoryChange(newSelection);
-      return newSelection;
-    });
+    onCategoryChange(newSelection);
   };
 
   if (error) return <p>{error}</p>;
