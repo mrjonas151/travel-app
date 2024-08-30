@@ -99,6 +99,7 @@ model Country {
   population                    String?
   time_zone                     String?
   time_to_travel                String?
+  capital                       String?
   tours                         Tour[]
   continent                     Continent @relation(fields: [continentId], references: [id])
   continentId                   String

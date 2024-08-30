@@ -162,8 +162,6 @@
 .swiperWrapper {
     padding-top: 50px;
     position: relative;
-    padding-left: 10%;
-    padding-right: 10%;
 }
 
 .swiperWrapperTourType {
@@ -175,10 +173,11 @@
 }
 
 .popularToursCarousel{
-    width: 70vw;
+    width: 85vw;
     height: 55vh;
     display: flex;
     margin: 4em auto;
+    margin-right: 5%;
 }
 
 .TourTypeCarousel{

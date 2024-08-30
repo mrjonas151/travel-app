@@ -1,6 +1,4 @@
 import styles from './ChooseUs.module.css'
-import ChooseUs_1 from '../../assets/ChooseUs_1.jpg'
-import ChooseUs_2 from '../../assets/ChooseUs_2.jpg'
 import { FaPlay, FaCheck } from 'react-icons/fa'
 
 const ChooseUs = () => {
@@ -8,12 +6,12 @@ const ChooseUs = () => {
     <div className={styles.container}>
         <div className={styles.imageWrapper}>
             <img
-          src={ChooseUs_2}
+          src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/ChooseUs_2.jpg?alt=media&token=728b97a3-9e13-4edd-8263-aeb2f356cd8c"
           alt="Image 1 Choose Us" 
           className={styles.imageNormal}
             />
             <img
-            src={ChooseUs_1} 
+            src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/ChooseUs_1.jpg?alt=media&token=b6e76081-629d-45ad-821b-6d9e5e6e871a"
             alt="Image 2 Choose Us"
             className={styles.imageTilted}
             />

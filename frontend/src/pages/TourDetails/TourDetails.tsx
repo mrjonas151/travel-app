@@ -92,7 +92,7 @@ const TourDetails = () => {
           <div className={styles.swiperWrapper}>
             <div className={styles.popularToursCarousel}>
               <Swiper
-                spaceBetween={30}
+                spaceBetween={0}
                 slidesPerView={4}
                 pagination={{ clickable: true }}
                 modules={[Pagination]}

@@ -114,7 +114,7 @@ const Home = () => {
         <div className={styles.swiperWrapper}>
           <div className={styles.popularToursCarousel}>
             <Swiper
-              spaceBetween={30}
+              spaceBetween={0}
               slidesPerView={4}
               pagination={{ clickable: true }}
               modules={[Pagination]}
@@ -145,7 +145,7 @@ const Home = () => {
                     title: tour.category.title,
                     tour_quantity: tour.category.tour_quantity,
                     price: tour.category.price
-                  }}                
+                  }}  
                 />
               </SwiperSlide>
             ))}
