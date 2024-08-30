@@ -59,7 +59,7 @@ export interface TourDetailComponentProps {
   };
 }
 
-const TourDetailComponent = ({ url_image, city, country, title, averageRating, userRatings, initial_date, final_date, initial_price, max_people, min_age, tour_type, overview_city, overview_curiosities, latitude, longitude, category}:TourDetailComponentProps) => {
+const TourDetailComponent = ({ id, url_image, city, country, title, averageRating, userRatings, initial_date, final_date, initial_price, max_people, min_age, tour_type, overview_city, overview_curiosities, latitude, longitude, category}:TourDetailComponentProps) => {
 
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
@@ -83,7 +83,6 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
     }
   };
 
-  console.log(userRatings);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.rowBook}>
@@ -166,13 +165,13 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
             <RatingCard
               rating={userRatings.length > 0 
               ? parseFloat((userRatings.reduce((sum, rating) => sum + (rating.services + rating.prices + rating.locations + rating.comfort + rating.amentities) / 5, 0) / userRatings.length).toFixed(1))
-              : 5}
+              : "-"}
               categories={[
-                { name: 'Services', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.services, 0) / userRatings.length).toFixed(1)) },
-                { name: 'Prices', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.prices, 0) / userRatings.length).toFixed(1)) },
-                { name: 'Locations', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.locations, 0) / userRatings.length).toFixed(1)) },
-                { name: 'Comfort', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.comfort, 0) / userRatings.length).toFixed(1)) },
-                { name: 'Amenities', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.amentities, 0) / userRatings.length).toFixed(1)) },
+                { name: 'Services', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.services, 0) / userRatings.length).toFixed(1)) || "-"},
+                { name: 'Prices', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.prices, 0) / userRatings.length).toFixed(1)) || "-"},
+                { name: 'Locations', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.locations, 0) / userRatings.length).toFixed(1)) || "-"},
+                { name: 'Comfort', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.comfort, 0) / userRatings.length).toFixed(1)) || "-"},
+                { name: 'Amenities', score: parseFloat((userRatings.reduce((sum, rating) => sum + rating.amentities, 0) / userRatings.length).toFixed(1)) || "-"},
               ]}
             />
             </div>
@@ -198,7 +197,7 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
                           <img src={white_star} alt="Rating Star" />
                           <p>{rating.services.toFixed(1)}</p>
                         </div>
-                        <p className={styles.reviewP}>122 Reviews</p>
+                        <p className={styles.reviewP}>1 Reviews</p>
                       </div>
                       <p className={styles.commentText}>{rating.comment}</p>
                     </div>
@@ -206,7 +205,7 @@ const TourDetailComponent = ({ url_image, city, country, title, averageRating, u
                 ))}
               </div>
               <div className={styles.reviewForm}>
-                <ReviewForm />
+                <ReviewForm tourId={id} />
               </div>
             </div>  
         </div>

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import styles from './ReviewForm.module.css';
+import { toast } from 'react-toastify';
+import api from '../../services/api';
 
-const ReviewForm: React.FC = () => {
+interface ReviewFormProps {
+    tourId: string;
+}
+
+const ReviewForm: React.FC<ReviewFormProps> = ({tourId}:ReviewFormProps) => {
   const [servicesRating, setServicesRating] = useState(0);
   const [locationRating, setLocationRating] = useState(0);
-  const [amenitiesRating, setAmenitiesRating] = useState(0);
+  const [amentitiesRating, setAmentitiesRating] = useState(0);
   const [pricesRating, setPricesRating] = useState(0);
   const [comfortRating, setComfortRating] = useState(0);
 
@@ -15,6 +21,47 @@ const ReviewForm: React.FC = () => {
   const handleRatingClick = (setRating: React.Dispatch<React.SetStateAction<number>>, rating: number) => {
     setRating(rating);
   };
+
+  const handleSubmitReview = async () => {
+    if (!name || !email || !comment) {
+      toast.error('Please fill all fields');
+      return;
+    }
+
+    if(servicesRating === 0 || locationRating === 0 || amentitiesRating === 0 || pricesRating === 0 || comfortRating === 0) {
+        toast.error('Please rate all categories');
+        return;
+    }
+
+    const review = {
+        user_id: "zG33jAlgVZZloiwIUyvLrkIVjPr2",
+        user_name: name,
+        user_email: email,
+        services: servicesRating,
+        locations: locationRating,
+        amentities: amentitiesRating,
+        prices: pricesRating,
+        comfort: comfortRating,
+        comment: comment,
+    };
+
+    console.log(review)
+
+    try {
+      await api.post(`/tourDetails/${tourId}/review`, review);
+      toast.success('Review submitted successfully');
+      setName('');
+      setEmail('');
+      setComment('');
+      setServicesRating(0);
+      setLocationRating(0);
+      setAmentitiesRating(0);
+      setPricesRating(0);
+      setComfortRating(0);
+    } catch (error) {
+      toast.error('Failed to submit review. Please try again.');
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -51,8 +98,8 @@ const ReviewForm: React.FC = () => {
             {[...Array(5)].map((_, i) => (
                 <span 
                 key={i} 
-                onClick={() => handleRatingClick(setAmenitiesRating, i + 1)}
-                className={amenitiesRating > i ? styles.starSelected : styles.star}
+                onClick={() => handleRatingClick(setAmentitiesRating, i + 1)}
+                className={amentitiesRating > i ? styles.starSelected : styles.star}
                 >★</span>
             ))}
             </div>
@@ -107,7 +154,7 @@ const ReviewForm: React.FC = () => {
             style={{ resize: 'none' }}
             />
         </div>
-        <button className={styles.submitButton}>Submit review</button>
+        <button className={styles.submitButton} onClick={handleSubmitReview}>Submit review</button>
         </div>
   );
 };

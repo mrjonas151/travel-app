@@ -9,13 +9,22 @@ interface RatingCardProps {
   }[];
 }
 
+const getRatingLabel = (rating: number): string => {
+  if (rating >= 4.5) return 'Excellent';
+  if (rating >= 3.5) return 'Good';
+  if (rating >= 2.5) return 'Ok';
+  if (rating >= 1.5) return 'Bad';
+  if (rating >= 0) return 'Really Bad';
+  return 'No Rating yet';
+};
+
 const RatingCard: React.FC<RatingCardProps> = ({ rating, categories }) => {
   return (
     <div className={styles.ratingCard}>
       <div className={styles.mainRating}>
         <div>
           <div className={styles.ratingNumber}>{rating}</div>
-          <div className={styles.ratingLabel}>★ Excellent</div>
+          <div className={styles.ratingLabel}>★ {getRatingLabel(rating)}</div>
         </div>
       </div>
       <div className={styles.categories}>
