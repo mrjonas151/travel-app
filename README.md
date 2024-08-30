@@ -35,8 +35,8 @@ npm install
 Now you have all the necessary dependencies installed. Almost there!
 
 ### 🔥Firebase
-Finally, since we use Firebase to manage user authentication in our application, you need to create a project in Firebase and retrieve your Key to access Firebase:
-Note that our application includes 2 example files for how the .env file should be configured. Follow those examples to securely place your Firebase keys!
+Finally, since i used Firebase to manage user authentication in this application, you need to create a project in Firebase and retrieve your Key to access Firebase:
+Note that this application includes 2 example files for how the .env file should be configured. Follow those examples to securely place your Firebase keys!
 Additionally, you need to retrieve and download the Firebase admin SDK json from the Firebase website and place this file directly in the backend folder, naming it "ServiceAccountKey.json".
 
 ## ⚙️ Running the environment on your local browser
