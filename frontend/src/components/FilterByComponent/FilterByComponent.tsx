@@ -17,7 +17,6 @@ const FilterByComponent: React.FC<FilterByComponentProps> = ({ onPriceChange }) 
 
   const handleSubmit = () => {
     onPriceChange(price/100);
-    console.log(price/100);
   };
 
   return (

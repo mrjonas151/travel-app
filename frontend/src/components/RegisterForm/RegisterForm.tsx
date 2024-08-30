@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './RegisterForm.module.css';
 import { FaUser, FaLock, FaPencilAlt } from 'react-icons/fa';
 import facebook_login from '../../assets/facebook_login.png';
@@ -6,17 +6,31 @@ import google_login from '../../assets/google_login.png';
 import handleGoogleSignIn from '../../hooks/handleGoogleSignIn';
 import handleFacebookSignIn from '../../hooks/handleFacebookSignIn';
 import handleSignUp from '../../hooks/handleSignUp';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
 
 const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const { user, loading } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!loading && user) {
+            navigate('/home'); 
+        }
+    }, [user, loading, navigate]);
 
     const onSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await handleSignUp({ firstName, lastName, email, password });
+        try{
+            await handleSignUp({ firstName, lastName, email, password });
+            navigate('/tour-package'); 
+        }catch(error){
+            console.error("Error during sign up", error);
+        }
     };
 
     return (

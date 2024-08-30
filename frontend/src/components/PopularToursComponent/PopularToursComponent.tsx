@@ -2,6 +2,8 @@ import styles from './PopularToursComponent.module.css'
 import white_star from '../../assets/white_star.png'
 import clock from '../../assets/clock.png'
 import { TourDetailComponentProps } from '../TourDetailComponent/TourDetailComponent'
+import { FaRegHeart } from 'react-icons/fa' 
+import { toast } from 'react-toastify'
 
 const PopularToursComponent = ({ id, url_image, city, country, title, averageRating, userRatings, initial_date, final_date, initial_price }:TourDetailComponentProps) => {
     
@@ -17,11 +19,17 @@ const PopularToursComponent = ({ id, url_image, city, country, title, averageRat
     return diffDays;
   };
 
-  const duration = calculateDays(new Date(initial_date), new Date(final_date));
+    const duration = calculateDays(new Date(initial_date), new Date(final_date));
+
+    const handleFavoriteTrip = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        toast.success("Added to favorites!");
+    }
 
     return (
     <div className={styles.mainContainer} onClick={handleClick}>
         <img src={url_image} alt='Place image' />
+        <div className={styles.overlayText}><FaRegHeart className={styles.iconFavorite} onClick={handleFavoriteTrip}/></div>
         <div className={styles.textsContainer}>
             <p className={styles.country}>{city}, {country.name}</p>
             

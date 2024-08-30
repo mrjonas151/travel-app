@@ -6,12 +6,38 @@
     cursor: pointer;
     text-decoration: none;
     color: #081134;
+    position: relative;
 }
 
 .mainContainer img {
     width: 300px;
     height: 250px;
     object-fit: cover;
+}
+
+.overlayText {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #081134;
+    background-color: #FFF;
+    padding: 5px 10px;
+    border-radius: 50%;
+    z-index: 10;
+    font-size: 14px;
+    height: 35px;
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+
+.overlayText:hover{
+    background-color: #f84d50;
+}
+
+.iconFavorite{
+    position: relative;
+    top: 6px;
 }
 
 .mainContainer p{

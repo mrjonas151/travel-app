@@ -45,8 +45,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({tourId}:ReviewFormProps) => {
         comment: comment,
     };
 
-    console.log(review)
-
     try {
       await api.post(`/tourDetails/${tourId}/review`, review);
       toast.success('Review submitted successfully');
