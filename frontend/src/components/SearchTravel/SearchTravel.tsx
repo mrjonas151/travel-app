@@ -1,11 +1,7 @@
 import InputComponent from '../InputComponent/InputComponent'
 import styles from './SearchTravel.module.css'
-import telegrama from '../../assets/telegrama.png'
-import flag from '../../assets/flag.png'
-import calendar from '../../assets/calendar.png'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import guestsl from '../../assets/guests.png'
 import { toast } from 'react-toastify'
 
 const SearchTravel = () => {
@@ -37,7 +33,7 @@ const SearchTravel = () => {
             <h2>Destination</h2>
             <InputComponent
               type="text"
-              imgSrc={telegrama}
+              imgSrc="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/telegrama.png?alt=media&token=d5e75db0-3d85-4f4c-ba1b-5a11d1503471"
               imgAlt="Telegrama logo"
               placeholder="Where to go?"
               value={destination}
@@ -48,7 +44,7 @@ const SearchTravel = () => {
             <h2>Type</h2>
             <InputComponent
               type="text"
-              imgSrc={flag}
+              imgSrc="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/flag.png?alt=media&token=1751cb2d-4e86-427d-bd9b-5cfbb9a1dd20"
               imgAlt="Flag logo"
               placeholder="Activity"
               value={type}
@@ -59,7 +55,7 @@ const SearchTravel = () => {
             <h2>When</h2>
             <InputComponent
               type="date"
-              imgSrc={calendar}
+              imgSrc="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/calendar.png?alt=media&token=8416cdcf-1e3b-46cf-8462-55dbabd5ebea"
               imgAlt="Calendar logo"
               placeholder="Date"
               value={date}
@@ -70,7 +66,7 @@ const SearchTravel = () => {
             <h2>Guests</h2>
             <InputComponent
               type="number"
-              imgSrc={guestsl}
+              imgSrc="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/guests.png?alt=media&token=a3f5d4e0-f5e1-4615-80dc-23b1dd554d39"
               imgAlt="Guests logo"
               placeholder="0"
               min={0}

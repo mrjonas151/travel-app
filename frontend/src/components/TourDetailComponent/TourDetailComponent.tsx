@@ -1,15 +1,10 @@
 import styles from './TourDetailComponent.module.css'
-import Share_tourDetail from '../../assets/Share_tourDetail.png'
-import Heart_tourDetail from '../../assets/Heart_tourDetail.png'
-import Location_tourDetail from '../../assets/Location_tourDetail.png'
 import { FaVideo, FaImage } from 'react-icons/fa'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 import BookingForm from '../BookingForm/BookingForm'
 import ReviewForm from '../ReviewForm/ReviewForm'
-import white_star from '../../assets/white_star.png'
 import RatingCard from '../RatingCard/RatingCard'
 import { toast } from 'react-toastify'
-import user_icon from '../../assets/user_icon.png'
 
 export interface TourDetailComponentProps {
   id: string;
@@ -83,6 +78,10 @@ const TourDetailComponent = ({ id, url_image, city, country, title, averageRatin
     }
   };
 
+  const handleAddFavorites = async() => {
+    toast.success('Added to favorites!'); 
+  }
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.rowBook}>
@@ -100,13 +99,13 @@ const TourDetailComponent = ({ id, url_image, city, country, title, averageRatin
       
       <div className={styles.placeDetails}>
         <div className={styles.locate}>
-          <img src={Location_tourDetail} className={styles.icon} alt="Location" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/Location_tourDetail.png?alt=media&token=ff908243-ded9-4460-872b-0812daddef50" className={styles.icon} alt="Location" />
           <span>{city}, {country.name}</span>
           <p onClick={scrollToMap} style={{ cursor: 'pointer' }}>View on map</p>
         </div>
         <div className={styles.share}>
-          <img src={Share_tourDetail} className={styles.icon} alt="Share" onClick={copyToClipboard} />
-          <img src={Heart_tourDetail} className={styles.icon} alt="Heart" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/Share_tourDetail.png?alt=media&token=774379aa-427a-4f24-8414-048c7f60c841" className={styles.icon} alt="Share" onClick={copyToClipboard} />
+          <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/Heart_tourDetail.png?alt=media&token=03249140-dd37-4e1c-969c-8eee58c5f0bf" className={styles.icon} alt="Heart" onClick={handleAddFavorites} />
         </div>
       </div>
       <h1 className={styles.titleH1}>{title}</h1>
@@ -182,7 +181,7 @@ const TourDetailComponent = ({ id, url_image, city, country, title, averageRatin
               <div className={styles.mainCommentContainer}>
                 {userRatings.map((rating, index) => (
                   <div key={index} className={styles.comment}>
-                    <img src={user_icon} alt="User profile" className={styles.profilePic} />
+                    <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/user_icon.png?alt=media&token=5cc823f8-b4e8-43bb-8288-bcb4b5f1bf67" alt="User profile" className={styles.profilePic} />
                     <div className={styles.commentContent}>
                       <span className={styles.commentDate}>
                         {new Date(rating.createdAt).toLocaleDateString('en-US', {
@@ -194,7 +193,7 @@ const TourDetailComponent = ({ id, url_image, city, country, title, averageRatin
                       <strong className={styles.commentAuthor}>{rating.user_name}</strong>
                       <div className={styles.firstReview}>
                         <div className={styles.stars}>
-                          <img src={white_star} alt="Rating Star" />
+                          <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/white_star.png?alt=media&token=88f1b35d-346d-4988-9738-bcb35403a505" alt="Rating Star" />
                           <p>{rating.services.toFixed(1)}</p>
                         </div>
                         <p className={styles.reviewP}>1 Reviews</p>

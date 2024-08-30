@@ -1,6 +1,4 @@
 import styles from './PopularToursComponent.module.css'
-import white_star from '../../assets/white_star.png'
-import clock from '../../assets/clock.png'
 import { TourDetailComponentProps } from '../TourDetailComponent/TourDetailComponent'
 import { FaRegHeart } from 'react-icons/fa' 
 import { toast } from 'react-toastify'
@@ -39,13 +37,13 @@ const PopularToursComponent = ({ id, url_image, city, country, title, averageRat
             <div className={styles.reviews}>
                 <div className={styles.firstReview}>
                     <div className={styles.stars}>
-                        <img src={white_star} />
+                        <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/white_star.png?alt=media&token=88f1b35d-346d-4988-9738-bcb35403a505" />
                         <p>{averageRating}</p>
                     </div>
                     <p className={styles.reviewP}>{userRatings.length} reviews</p>
                 </div>
                 <div className={styles.days}>
-                    <img src={clock} alt='clock logo'/>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/clock.png?alt=media&token=fe68b6f7-9ff9-404c-8a97-886527b97db1" alt='clock logo'/>
                     <p className={styles.reviewQ}>{duration} days</p>
                 </div>
             </div>

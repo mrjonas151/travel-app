@@ -2,7 +2,6 @@ import Footer from "../../components/Footer/Footer"
 import Header from "../../components/Header/Header"
 import SearchTravel from "../../components/SearchTravel/SearchTravel"
 import styles from './Home.module.css'
-import air_balloon from '../../assets/air_balloon.png'
 import TextHome from "../../components/TextHome/TextHome"
 import PopularToursComponent from "../../components/PopularToursComponent/PopularToursComponent"
 import StatisticsComponent from "../../components/StatisticsComponent/StatisticsComponent"
@@ -95,7 +94,7 @@ const Home = () => {
     <>
         <Header />
         <div className={styles.imageContainer}>
-          <img src={air_balloon} alt="Air Balloon" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/air_balloon.png?alt=media&token=c8528a37-d3a3-4b5b-9c79-76aff69fdaa2" alt="Air Balloon" />
           <div className={styles.textOverlay}>
             <TextHome />
           </div>
