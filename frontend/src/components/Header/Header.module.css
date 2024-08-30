@@ -92,6 +92,31 @@
 
 .userImg{
     width: 20px !important;
+    position: relative;
+    top: 2px;
+}
+
+.userContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #081134;
+    margin-right: 2em;
+    gap: 0.5em;
+}
+
+.logoutButton{
+    background-color: #f84d50;
+    color: white;
+    border: none;
+    padding: 0.5em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.welcome{
+    position: relative;
+    bottom: 1px;
 }
 
 .loginLink{

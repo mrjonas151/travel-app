@@ -11,6 +11,7 @@ import TourDetails from './pages/TourDetails/TourDetails';
 import TourPackage from './pages/TourPackage/TourPackage';
 import Destination from './pages/Destination/Destination';
 import DestinationDetails from './pages/DestinationDetails/DestinationDetails';
+import ProtectedRoute from './pages/ProtectedRoute/ProtectedRoute';
 
 function App() {
 
@@ -22,8 +23,8 @@ function App() {
         <Route path="/destination-details/:id" element={<DestinationDetails />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/tour-details/:tour_id" element={<TourDetails />} />
-        <Route path="/tour-package" element={<TourPackage />} />
+        <Route path="/tour-details/:tour_id" element={<ProtectedRoute element={<TourDetails />} />} />
+        <Route path="/tour-package" element={<ProtectedRoute element={<TourPackage />} />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <ToastContainer />

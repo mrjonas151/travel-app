@@ -6,13 +6,16 @@ import linkedin from "../../assets/linkedin.png"
 import google from "../../assets/google.png"
 import pinterest from "../../assets/pinterest.png"
 import lupa from "../../assets/lupa.png"
-import user from "../../assets/user.png"
+import userr from "../../assets/userr.png"
 import { useState } from "react"
+import { useAuth } from "../../contexts/AuthContext";
+
 
 const Header = () => {
   const [showInput, setShowInput] = useState(false);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   const handleSearch = () => {
     setShowInput(!showInput);
@@ -21,6 +24,15 @@ const Header = () => {
   const handleKeyPress = (event: { key: string }) => {
     if (event.key === "Enter") {
        navigate(`/tour-package?search=${encodeURIComponent(search)}`);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      navigate("/");
+    } catch (error) {
+      console.error("Logout error", error);
     }
   };
 
@@ -62,8 +74,17 @@ const Header = () => {
         <div className={styles.searchContainer}>
           {showInput && <input className={styles.input} placeholder="Search destination..." onChange={(e) => setSearch(e.target.value)} onKeyPress={handleKeyPress} />}
           <img onClick={handleSearch} src={lupa} alt="search" className={styles.lupa} />
-          <img src={user} alt="user" className={styles.userImg} />
-          <Link to="/" className={styles.loginLink}>Login / SignUp</Link>
+          {user ? (
+            <div className={styles.userContainer}>
+              <p className={styles.welcome}><img src={userr} alt="user" className={styles.userImg}/> {user.displayName || user.email ||'User'}</p>
+              <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
+            </div>
+          ) : (
+            <div>
+              <img src={userr} alt="user" className={styles.userImg} />
+              <Link to="/" className={styles.loginLink}>Login / SignUp</Link>
+            </div>
+          )}
         </div>
       </nav>
     </div>

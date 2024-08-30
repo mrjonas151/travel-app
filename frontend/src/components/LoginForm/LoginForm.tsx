@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { FaUser, FaLock } from 'react-icons/fa';
 import facebook_login from '../../assets/facebook_login.png';
@@ -6,19 +6,33 @@ import google_login from '../../assets/google_login.png';
 import handleGoogleSignIn from '../../hooks/handleGoogleSignIn';
 import handleFacebookSignIn from '../../hooks/handleFacebookSignIn';
 import handleSignIn from '../../hooks/handleSignIn';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { user, loading } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!loading && user) {
+            navigate('/home'); 
+        }
+    }, [user, loading, navigate]);
 
     const onSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await handleSignIn({ email, password });
+        try {
+            await handleSignIn({ email, password });
+            navigate('/tour-package'); 
+        } catch (error) {
+            console.error("Error during sign in", error);
+        }
     };
 
     const goToHome = () => {
-        window.location.href = '/home';
+        navigate('/home');
     }
 
     return (
