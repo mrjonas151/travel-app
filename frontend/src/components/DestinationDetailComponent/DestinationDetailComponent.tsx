@@ -25,18 +25,39 @@ export interface CountryDetailProps {
   population: string;
   time_zone: string;
   time_to_travel: string;
+  capital?: string;
 }
 
-const DestinationDetailComponent = ({id, name, travelers_quantity, url_image, latitude, longitude, min_weather, max_weather, overview_country, overview_country_curiosities, language, currency, area, population, time_zone, time_to_travel}:CountryDetailProps) => {
+interface WeatherForecast {
+  dt: number; 
+  main: {
+    temp: number;
+    temp_min: number; 
+    temp_max: number; 
+  };
+  weather: {
+    description: string; 
+    icon: string; 
+  }[];
+  dt_txt: string;
+}
+
+interface ForecastResponse {
+  list: WeatherForecast[]; 
+}
+
+const DestinationDetailComponent = ({id, name, travelers_quantity, url_image, latitude, longitude, min_weather, max_weather, overview_country, overview_country_curiosities, language, currency, area, population, time_zone, time_to_travel, capital}:CountryDetailProps) => {
   const [tours, setTours] = useState<TourDetailComponentProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [forecast, setForecast] = useState<WeatherForecast[]>([]);
+  const city = capital;
 
   const getAllTours = async () => {
     try {
       setLoading(true);
       const response = await api.get(`/tourDetails/countries/${id}`);
-      setTours(response.data.tours);  
+      setTours(response.data.tours); 
     } catch (err) {
       setError('Error searching for tours');
     } finally {
@@ -51,11 +72,26 @@ const DestinationDetailComponent = ({id, name, travelers_quantity, url_image, la
 
   useEffect(() => {
     getAllTours();
-  }, [id]);
+    getWeatherData();
+  }, [id, city]);
 
   const handleRedirectAllTours = () => {
     window.location.href = `/tour-package`;
   }
+
+  const getWeatherData = async () => {
+    const apiWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${import.meta.env.VITE_APP_OPEN_WEATHER_API_KEY}&units=metric`;
+
+    try {
+      const res = await fetch(apiWeatherURL);
+      const data: ForecastResponse = await res.json();
+
+      const dailyForecast = data.list.filter((_, index) => index % 8 === 0).slice(0, 5);
+      setForecast(dailyForecast);
+    } catch (error) {
+      console.error('Error searching weather data:', error);
+    }
+  };
 
   if (loading) return <p>Waiting...</p>;
   if (error) return <p>{error}</p>;
@@ -100,34 +136,18 @@ const DestinationDetailComponent = ({id, name, travelers_quantity, url_image, la
           </div>
           <div className={styles.weather}>
             <h2>Weather</h2>
-            <div className={styles.rowItemsWeather}>
-              <span>Jan-Feb</span>
-              <p>12°-18°C</p>
-            </div>
-            <div className={styles.horizontalLine}></div>
-            <div className={styles.rowItemsWeather}>
-              <span>Mar-Apr</span>
-              <p>12°-18°C</p>
-            </div>
-            <div className={styles.horizontalLine}></div>
-            <div className={styles.rowItemsWeather}>
-              <span>May-Jun</span>
-              <p>12°-18°C</p>
-            </div>
-            <div className={styles.horizontalLine}></div>
-            <div className={styles.rowItemsWeather}>
-              <span>Jul-Aug</span>
-              <p>12°-18°C</p>
-            </div>
-            <div className={styles.horizontalLine}></div>
-            <div className={styles.rowItemsWeather}>
-              <span>Sep-Oct</span>
-              <p>12°-18°C</p>
-            </div>
-            <div className={styles.horizontalLine}></div>
-            <div className={styles.rowItemsWeather}>
-              <span>Nov-Dec</span>
-              <p>12°-18°C</p>
+            <div>
+              {forecast.map((day, index) => (
+                <div key={index} className={styles.rowItemsWeather}>
+                  <span>{new Date(day.dt * 1000).toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'long', 
+                      })}:
+                  </span>
+                  <p>{Math.round(day.main.temp_min)}°C <strong>|</strong> {Math.round(day.main.temp_max)}°C</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

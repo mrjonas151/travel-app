@@ -44,7 +44,7 @@ const DestinationDetails = () => {
       <Header />
       <BackgroundComponent country={country.name} image={country.url_image} />
       <div className={styles.destinationComponent}>
-        <DestinationDetailComponent id={country.id} name={country.name} travelers_quantity={country.travelers_quantity} url_image={country.url_image} latitude={country.latitude} longitude={country.longitude} min_weather={country.min_weather} max_weather={country.max_weather} overview_country={country.overview_country} overview_country_curiosities={country.overview_country_curiosities} language={country.language} currency={country.currency} area={country.area} population={country.population} time_zone={country.time_zone} time_to_travel={country.time_to_travel}  />
+        <DestinationDetailComponent id={country.id} name={country.name} travelers_quantity={country.travelers_quantity} url_image={country.url_image} latitude={country.latitude} longitude={country.longitude} min_weather={country.min_weather} max_weather={country.max_weather} overview_country={country.overview_country} overview_country_curiosities={country.overview_country_curiosities} language={country.language} currency={country.currency} area={country.area} population={country.population} time_zone={country.time_zone} time_to_travel={country.time_to_travel} capital={country.capital} />
       </div>
       <Footer />
     </>

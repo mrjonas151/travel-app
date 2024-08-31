@@ -50,6 +50,7 @@ class TourDetailsService {
             longitude: true,
             min_weather: true,
             max_weather: true,
+            capital: true,
           },
         },
       },
@@ -97,6 +98,7 @@ class TourDetailsService {
         population: true,
         time_zone: true,
         time_to_travel: true,
+        capital: true,
         tours: {
           select: {
             id: true,
@@ -145,6 +147,7 @@ class TourDetailsService {
                 longitude: true,
                 min_weather: true,
                 max_weather: true,
+                capital: true,
               },
             },
           },
@@ -205,6 +208,7 @@ class TourDetailsService {
             longitude: true,
             min_weather: true,
             max_weather: true,
+            capital: true,
           },
         },
       },

@@ -127,7 +127,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 93.4%;
+    width: 100%;
 }
 
 .seeAll button{
@@ -151,6 +151,8 @@
     font-weight: 700;
     cursor: pointer;
     background-color: transparent;
+    position: relative;
+    left: 40px;
 }
 
 .seeAll .icon{
@@ -165,18 +167,38 @@
 }
 
 .popularToursCarousel {
-    width: 75vw;
+    width: 85vw;
     height: 57vh;
     display: flex;
     margin: 4em auto;
 }
 
 .rowItemsWeather{
+    margin-top: 5px;
     display: grid;
     grid-template-columns: 140px 1fr;
     width: 100%;
     align-items: center;
-    gap: 1em;
+    gap: 80px;
+}
+
+.rowItemsWeather strong{
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.rowItemsWeather>* {
+    margin-bottom: 40px;
+}
+
+.rowItemsWeather span {
+    margin-right: 10px;
+    font-weight: bold;
+    width: 300px
+}
+
+.rowItemsWeather p {
+    margin-top: 0px;
 }
 
 .horizontalLine{
