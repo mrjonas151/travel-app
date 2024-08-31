@@ -36,7 +36,7 @@ const TourDetails = () => {
   const getAllTours = async () => {
     try {
       const response = await api.get('/tourDetails');
-      setTours(response.data);  
+      setTours(response.data.slice(0, 8));  
     } catch (err) {
       setError('Error searching for tours');
     } finally {
