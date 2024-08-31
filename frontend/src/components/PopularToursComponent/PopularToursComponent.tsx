@@ -38,7 +38,7 @@ const PopularToursComponent = ({ id, url_image, city, country, title, averageRat
                 <div className={styles.firstReview}>
                     <div className={styles.stars}>
                         <img src="https://firebasestorage.googleapis.com/v0/b/travel-app-d9bdb.appspot.com/o/white_star.png?alt=media&token=88f1b35d-346d-4988-9738-bcb35403a505" />
-                        <p>{averageRating}</p>
+                        <p>{averageRating > 0 ? averageRating : "---"}</p>
                     </div>
                     <p className={styles.reviewP}>{userRatings.length} reviews</p>
                 </div>

@@ -25,7 +25,7 @@ const handleGoogleSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
             await axios.post("http://localhost:3333/users", userObj);
             toast.success("Signed in successfully");
         } catch (error) {
-            console.log(error);
+            console.error(error);
             toast.error("Signed in, but failed to save user to database");
         }
     } catch (error: any) {

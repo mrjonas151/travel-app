@@ -35,7 +35,7 @@ const handleSignUp = async ({
             console.log(userCredential);
             toast.success("Account created!");
         } catch (error) {
-            console.log(error);
+            console.error(error);
             toast.error("Failed to Sign up");
         }
     } catch (error: any) {
@@ -44,7 +44,7 @@ const handleSignUp = async ({
         } else {
             toast.error('Failed to sign up.');
         }
-        console.log(error);
+        console.error(error);
     }
 };
 

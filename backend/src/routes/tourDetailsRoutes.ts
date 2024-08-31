@@ -9,5 +9,6 @@ tourDetailsRouter.post("/:id/review", PopularToursController.createUserReviewCon
 tourDetailsRouter.get("/popular", PopularToursController.getPopularToursByTravelersQuantityController);
 tourDetailsRouter.get("/:id", PopularToursController.getTourDetailsController);
 tourDetailsRouter.get("/countries/:id", PopularToursController.getPopularCountryByIdController);
+tourDetailsRouter.patch("/:id/rating", PopularToursController.updateAverageRatingController);
 
 export default tourDetailsRouter;

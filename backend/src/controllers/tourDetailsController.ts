@@ -73,6 +73,25 @@ class PopularToursController {
         return res.status(500).json({ message: 'Error searching continents' });
       }
   }
+
+  static async updateAverageRatingController(req: Request, res: Response) {
+    const { id } = req.params;
+    const { averageRating } = req.body;
+
+    if (typeof averageRating !== 'number') {
+      return res.status(400).json({ message: "averageRating must be a number" });
+    }
+
+    try {
+      const updatedTour = await TourDetailsService.updateAverageRatingService(id, averageRating);
+      if (!updatedTour) {
+        return res.status(404).json({ message: "Tour not found" });
+      }
+      return res.json(updatedTour);
+    } catch (error) {
+      return res.status(500).json({ message: "Error updating averageRating" });
+    }
+  }
 }
 
 export { PopularToursController };

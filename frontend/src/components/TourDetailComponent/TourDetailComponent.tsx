@@ -5,6 +5,8 @@ import BookingForm from '../BookingForm/BookingForm'
 import ReviewForm from '../ReviewForm/ReviewForm'
 import RatingCard from '../RatingCard/RatingCard'
 import { toast } from 'react-toastify'
+import { useEffect, useState } from 'react'
+import api from '../../services/api'
 
 export interface TourDetailComponentProps {
   id: string;
@@ -56,6 +58,8 @@ export interface TourDetailComponentProps {
 
 const TourDetailComponent = ({ id, url_image, city, country, title, averageRating, userRatings, initial_date, final_date, initial_price, max_people, min_age, tour_type, overview_city, overview_curiosities, latitude, longitude, category}:TourDetailComponentProps) => {
 
+  const [currentAverageRating, setCurrentAverageRating] = useState(averageRating);
+
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY || '',
@@ -81,6 +85,29 @@ const TourDetailComponent = ({ id, url_image, city, country, title, averageRatin
   const handleAddFavorites = async() => {
     toast.success('Added to favorites!'); 
   }
+
+  useEffect(() => {
+    const calculateAverageRating = () => {
+      if (userRatings.length === 0) return 0;
+
+      const totalScore = userRatings.reduce((sum, rating) => sum + (rating.services + rating.prices + rating.locations + rating.comfort + rating.amentities) / 5, 0);
+      return parseFloat((totalScore / userRatings.length).toFixed(1));
+    };
+
+    setCurrentAverageRating(calculateAverageRating());
+  }, [userRatings]);
+
+  const updateAverageRating = async () => {
+    try {
+      await api.patch(`/tourDetails/${id}/rating`, { averageRating: currentAverageRating });
+    } catch (error) {
+      return;
+    }
+  };
+
+  useEffect(() => {
+    updateAverageRating();
+  }, [currentAverageRating]);
 
   return (
     <div className={styles.mainContainer}>

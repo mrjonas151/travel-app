@@ -264,6 +264,19 @@ static async createUserReviewService(tourId: string, review: {
     });
     return continents;
   }
+
+  static async updateAverageRatingService(id: string, averageRating: number) {
+    try {
+      const updatedTour = await prisma.tour.update({
+        where: { id },
+        data: { averageRating },
+      });
+      return updatedTour;
+    } catch (error) {
+      console.error('Error updating averageRating:', error);
+      throw error;
+    }
+  }
 }
 
 export { TourDetailsService };
