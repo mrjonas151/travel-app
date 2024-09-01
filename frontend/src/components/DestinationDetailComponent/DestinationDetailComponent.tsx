@@ -86,12 +86,45 @@ const DestinationDetailComponent = ({id, name, travelers_quantity, url_image, la
       const res = await fetch(apiWeatherURL);
       const data: ForecastResponse = await res.json();
 
-      const dailyForecast = data.list.filter((_, index) => index % 8 === 0).slice(0, 5);
-      setForecast(dailyForecast);
+      const dailyForecastMap = data.list.reduce((acc, forecast) => {
+        const date = new Date(forecast.dt * 1000).toLocaleDateString('en-US', {
+          day: 'numeric',
+          month: 'numeric',
+          year: 'numeric',
+        });
+
+        if (!acc[date]) {
+          acc[date] = [];
+        }
+
+        acc[date].push(forecast);
+        return acc;
+      }, {} as Record<string, WeatherForecast[]>);
+
+      const dailyForecast = Object.values(dailyForecastMap).map((forecasts) => {
+        const minTemp = Math.min(...forecasts.map((f) => f.main.temp_min));
+        const maxTemp = Math.max(...forecasts.map((f) => f.main.temp_max));
+
+        const { dt, weather, dt_txt } = forecasts[0];
+
+        return {
+          dt,
+          main: {
+            temp_min: minTemp,
+            temp_max: maxTemp,
+            temp: (minTemp + maxTemp) / 2,
+          },
+          weather,
+          dt_txt, 
+        };
+      });
+
+      setForecast(dailyForecast.slice(0, 5));
     } catch (error) {
       console.error('Error searching weather data:', error);
     }
   };
+
 
   if (loading) return <p>Waiting...</p>;
   if (error) return <p>{error}</p>;
