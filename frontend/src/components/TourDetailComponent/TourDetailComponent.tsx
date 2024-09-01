@@ -59,6 +59,7 @@ export interface TourDetailComponentProps {
 const TourDetailComponent = ({ id, url_image, city, country, title, averageRating, userRatings, initial_date, final_date, initial_price, max_people, min_age, tour_type, overview_city, overview_curiosities, latitude, longitude, category}:TourDetailComponentProps) => {
 
   const [currentAverageRating, setCurrentAverageRating] = useState(averageRating);
+  const [currentUserRatings, setCurrentUserRatings] = useState(userRatings);
 
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
@@ -108,6 +109,15 @@ const TourDetailComponent = ({ id, url_image, city, country, title, averageRatin
   useEffect(() => {
     updateAverageRating();
   }, [currentAverageRating]);
+
+  const handleNewReview = async () => {
+    try {
+      const response = await api.get(`/tourDetails/${id}`);
+      setCurrentUserRatings(response.data.userRatings);
+    } catch (error) {
+      console.error('Failed to fetch updated reviews. Please try again.');
+    }
+  };
 
   return (
     <div className={styles.mainContainer}>
@@ -231,7 +241,7 @@ const TourDetailComponent = ({ id, url_image, city, country, title, averageRatin
                 ))}
               </div>
               <div className={styles.reviewForm}>
-                <ReviewForm tourId={id} />
+                <ReviewForm tourId={id} onNewReview={handleNewReview} />
               </div>
             </div>  
         </div>

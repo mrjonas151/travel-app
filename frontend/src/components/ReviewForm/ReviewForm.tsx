@@ -5,9 +5,10 @@ import api from '../../services/api';
 
 interface ReviewFormProps {
     tourId: string;
+    onNewReview: () => void;
 }
 
-const ReviewForm: React.FC<ReviewFormProps> = ({tourId}:ReviewFormProps) => {
+const ReviewForm: React.FC<ReviewFormProps> = ({tourId, onNewReview}:ReviewFormProps) => {
   const [servicesRating, setServicesRating] = useState(0);
   const [locationRating, setLocationRating] = useState(0);
   const [amentitiesRating, setAmentitiesRating] = useState(0);
@@ -56,6 +57,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({tourId}:ReviewFormProps) => {
       setAmentitiesRating(0);
       setPricesRating(0);
       setComfortRating(0);
+      onNewReview();
     } catch (error) {
       toast.error('Failed to submit review. Please try again.');
     }
