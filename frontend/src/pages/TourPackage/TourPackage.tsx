@@ -36,6 +36,7 @@ const TourPackage = () => {
       const filter = params.get('filter');
       const search = params.get('search');
       const type = params.get('type');
+      const country = params.get('country');
 
       if (search) {
         setSearchTerm(search);
@@ -48,6 +49,10 @@ const TourPackage = () => {
       if (type) {
         setSelectedCategories(prev => [...new Set([...prev, type])]); 
       }
+
+      if (country) {
+      setSelectedDestinations((prev) => [...new Set([...prev, country])]);
+    }
     };
 
     applyFilterFromURL();
@@ -88,8 +93,7 @@ const TourPackage = () => {
       tour.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tour.country.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const matchesDestination = selectedDestinations.length === 0 ||
-      selectedDestinations.includes(tour.country.name);
+    const matchesDestination = selectedDestinations.length === 0 || selectedDestinations.includes(tour.country.name) || selectedDestinations.includes(tour.country.name.toLowerCase());
 
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(tour.category.title);
     

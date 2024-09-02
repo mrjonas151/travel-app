@@ -76,8 +76,9 @@ const DestinationDetailComponent = ({id, name, travelers_quantity, url_image, la
   }, [id, city]);
 
   const handleRedirectAllTours = () => {
-    window.location.href = `/tour-package`;
-  }
+    const formattedName = name.replace(/\s+/g, '-').toLowerCase();
+    window.location.href = `/tour-package?country=${formattedName}`;
+  };
 
   const getWeatherData = async () => {
     const apiWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${import.meta.env.VITE_APP_OPEN_WEATHER_API_KEY}&units=metric`;
