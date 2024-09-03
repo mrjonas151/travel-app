@@ -19,7 +19,8 @@ const SearchTravel = () => {
 
     const searchParams = new URLSearchParams({
       search: destination,
-      type
+      type,
+      date: date.toString()
     }).toString();
 
     navigate(`/tour-package?${searchParams}`);
